@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>楽天モバイル基地局マップ（愛媛県）</title>
+    <meta name="description" content="楽天モバイル" />
+    <style>
+      #input {
+        display: none; /* inline-block */
+      }
+      #output {
+        display: none; /* inline-block */
+      }
+      #map-canvas {
+        height: 600px;
+      }
+      #footer {
+        font-size: 70%;
+      }
+    </style>
+  </head>
+  <body>
+    <script
+      type="module"
+      src="https://code4fukui.github.io/csv-map/csv-map.js"
+    ></script>
+    <csv-map src="ehime.csv"></csv-map>
+
+    <script
+      type="module"
+      src="https://code4sabae.github.io/js/csv-viewer.js"
+    ></script>
+    <csv-viewer name="楽天モバイル基地局" src="ehime.csv"></csv-viewer>
+  </body>
+</html>
