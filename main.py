@@ -10,7 +10,7 @@ import simplekml
 url = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRE1NoYtNw1FmjRQ8wcdPkcE0Ryeoc2mfFkCQPHjzwL5CpwNKkLXnBl_F7c0LZjrtbLtRLH55ZVi6gQ/pub?gid=0&single=true&output=csv"
 
 df = (
-    pd.read_csv(url, index_col=0, usecols=[0, 1, 2, 6, 7, 10, 11, 12, 13])
+    pd.read_csv(url, index_col=0, usecols=[0, 1, 2, 7, 8, 11, 12, 13, 14])
     .dropna(how="all")
     .fillna("")
 )
