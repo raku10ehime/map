@@ -40,6 +40,13 @@ folium.raster_layers.TileLayer(
 ).add_to(map)
 
 folium.raster_layers.TileLayer(
+    "https://{s}.google.com/vt/lyrs=s,h&x={x}&y={y}&z={z}",
+    subdomains=["mt0", "mt1", "mt2", "mt3"],
+    name="Google Map(航空写真)",
+    attr="<a href='https://developers.google.com/maps/documentation' target='_blank'>© Google</a>",
+).add_to(map)
+
+folium.raster_layers.TileLayer(
     name="楽天モバイル（直近）",
     tiles="https://gateway-api.global.rakuten.com/dsd/geoserver/4g2m/mno_coverage_map/gwc/service/gmaps?LAYERS=mno_coverage_map:all_map&FORMAT=image/png&TRANSPARENT=TRUE&x={x}&y={y}&zoom={z}",
     fmt="image/png",
