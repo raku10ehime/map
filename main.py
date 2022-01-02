@@ -43,7 +43,7 @@ folium.raster_layers.TileLayer(
     "https://cyberjapandata.gsi.go.jp/xyz/hillshademap/{z}/{x}/{y}.png",
     name="国土地理院（陰影起伏図）",
     attr="<a href='https://maps.gsi.go.jp/development/ichiran.html'>国土地理院</a>",
-    opacity=0.4,
+    opacity=0.6,
 ).add_to(map)
 
 folium.raster_layers.TileLayer(
