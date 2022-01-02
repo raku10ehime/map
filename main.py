@@ -31,18 +31,21 @@ folium.raster_layers.TileLayer(
     tiles="https://cyberjapandata.gsi.go.jp/xyz/pale/{z}/{x}/{y}.png",
     name="国土地理院",
     attr='&copy; <a href="https://maps.gsi.go.jp/development/ichiran.html">国土地理院</a>',
+    max_zoom = 16,
 ).add_to(map)
 
 folium.raster_layers.TileLayer(
     tiles="https://cyberjapandata.gsi.go.jp/xyz/blank/{z}/{x}/{y}.png",
     name="国土地理院（白地図）",
     attr='&copy; <a href="https://maps.gsi.go.jp/development/ichiran.html">国土地理院</a>',
+    max_zoom = 16,
 ).add_to(map)
 
 folium.raster_layers.TileLayer(
     "https://cyberjapandata.gsi.go.jp/xyz/hillshademap/{z}/{x}/{y}.png",
     name="国土地理院（陰影起伏図）",
     attr="<a href='https://maps.gsi.go.jp/development/ichiran.html'>国土地理院</a>",
+    max_zoom = 16,
     opacity=0.4,
 ).add_to(map)
 
@@ -51,6 +54,7 @@ folium.raster_layers.TileLayer(
     subdomains=["mt0", "mt1", "mt2", "mt3"],
     name="Google Map(航空写真)",
     attr="<a href='https://developers.google.com/maps/documentation' target='_blank'>© Google</a>",
+    max_zoom = 16,
     opacity=0.8,
 ).add_to(map)
 
