@@ -16,6 +16,7 @@ df = (
 )
 
 df["color"] = df["状況"].replace({"open": "green", "close": "red", "ready": "orange", "check": "gray"})
+df["icon"] = df["状況"].replace({"open": "signal", "close": "remove", "ready": "wrench", "check": "search"})
 df["場所"] = df["場所"].str.strip()
 
 csv_path = pathlib.Path("map", "ehime.csv")
@@ -201,7 +202,7 @@ for i, r in df.iterrows():
                 max_width=300,
             ),
             tooltip=f'{r["場所"]}',
-            icon=folium.Icon(color=r["color"], icon="signal"),
+            icon=folium.Icon(color=r["color"], icon=r["icon"]),
         )
     )
 
