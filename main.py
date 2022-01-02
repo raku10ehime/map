@@ -40,6 +40,12 @@ folium.raster_layers.TileLayer(
 ).add_to(map)
 
 folium.raster_layers.TileLayer(
+    "https://cyberjapandata.gsi.go.jp/xyz/hillshademap/{z}/{x}/{y}.png",
+    name="国土地理院（陰影起伏図）",
+    attr="<a href='https://maps.gsi.go.jp/development/ichiran.html'>国土地理院</a>",
+).add_to(map)
+
+folium.raster_layers.TileLayer(
     "https://{s}.google.com/vt/lyrs=s,h&x={x}&y={y}&z={z}",
     subdomains=["mt0", "mt1", "mt2", "mt3"],
     name="Google Map(航空写真)",
