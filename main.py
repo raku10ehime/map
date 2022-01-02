@@ -51,7 +51,7 @@ folium.raster_layers.TileLayer(
     subdomains=["mt0", "mt1", "mt2", "mt3"],
     name="Google Map(航空写真)",
     attr="<a href='https://developers.google.com/maps/documentation' target='_blank'>© Google</a>",
-    opacity=0.6,
+    opacity=0.8,
 ).add_to(map)
 
 folium.raster_layers.TileLayer(
