@@ -3,6 +3,8 @@ name: Python application
 on:
   schedule:
     - cron:  '0 20 * * *'
+  repository_dispatch:
+    types: [on-map-update]
   workflow_dispatch:
 
 jobs:
