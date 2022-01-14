@@ -154,7 +154,7 @@ for i, r in df.iterrows():
     )
 
     tag_twit = (
-        f'<p><a href="{url_twit}" target="_blank">開局報告</a></p>'
+        f'<p><a href="{url_twit}" target="_blank">[開局報告]</a></p>'
         if r["状況"] != "open"
         else ""
     )
