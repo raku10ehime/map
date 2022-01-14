@@ -1,11 +1,12 @@
 # -*- coding: utf-8 -*-
 import pathlib
+import urllib.parse
 
 import folium
-from folium.features import DivIcon
-from folium import plugins
 import pandas as pd
 import simplekml
+from folium import plugins
+from folium.features import DivIcon
 
 url = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRE1NoYtNw1FmjRQ8wcdPkcE0Ryeoc2mfFkCQPHjzwL5CpwNKkLXnBl_F7c0LZjrtbLtRLH55ZVi6gQ/pub?gid=0&single=true&output=csv"
 
@@ -15,8 +16,12 @@ df = (
     .fillna("")
 )
 
-df["color"] = df["状況"].replace({"open": "green", "close": "red", "ready": "orange", "check": "gray"})
-df["icon"] = df["状況"].replace({"open": "signal", "close": "remove", "ready": "wrench", "check": "search"})
+df["color"] = df["状況"].replace(
+    {"open": "green", "close": "red", "ready": "orange", "check": "gray"}
+)
+df["icon"] = df["状況"].replace(
+    {"open": "signal", "close": "remove", "ready": "wrench", "check": "search"}
+)
 df["場所"] = df["場所"].str.strip()
 
 csv_path = pathlib.Path("map", "ehime.csv")
@@ -103,84 +108,27 @@ folium.plugins.Draw(
 
 kml = simplekml.Kml(name="Ehime")
 
-# 開局
+# アイコン設定
 
-open_img = kml.addfile("open.png")
+icons = ["open.png", "close.png", "ready.png", "check.png"]
 
-# スタイル
-open_normal = simplekml.Style()
-open_normal.iconstyle.scale = 1
-open_normal.iconstyle.icon.href = open_img
+for icon in icons:
 
-# スタイル
-open_highlight = simplekml.Style()
-open_highlight.iconstyle.scale = 1
-open_highlight.iconstyle.icon.href = open_img
+    fn = kml.addfile(icon)
 
-open_stylemap = simplekml.StyleMap()
-open_stylemap.normalstyle = open_normal
-open_stylemap.highlightstyle = open_highlight
+    def make_style(fn, scale=1):
 
-# 未開局
+        kmlstyle = simplekml.Style()
+        kmlstyle.iconstyle.scale = scale
+        kmlstyle.iconstyle.icon.href = fn
 
-close_img = kml.addfile("close.png")
+        return kmlstyle
 
-# スタイル
-close_normal = simplekml.Style()
-close_normal.iconstyle.scale = 1
-close_normal.iconstyle.icon.href = close_img
+    kmlstylemap = simplekml.StyleMap()
+    kmlstylemap.normalstyle = make_style(fn)
+    kmlstylemap.highlightstyle = make_style(fn)
 
-# スタイル
-close_highlight = simplekml.Style()
-close_highlight.iconstyle.scale = 1
-close_highlight.iconstyle.icon.href = close_img
-
-close_stylemap = simplekml.StyleMap()
-close_stylemap.normalstyle = close_normal
-close_stylemap.highlightstyle = close_highlight
-
-# 準備
-
-ready_img = kml.addfile("ready.png")
-
-# スタイル
-ready_normal = simplekml.Style()
-ready_normal.iconstyle.scale = 1
-ready_normal.iconstyle.icon.href = ready_img
-
-# スタイル
-ready_highlight = simplekml.Style()
-ready_highlight.iconstyle.scale = 1
-ready_highlight.iconstyle.icon.href = ready_img
-
-ready_stylemap = simplekml.StyleMap()
-ready_stylemap.normalstyle = ready_normal
-ready_stylemap.highlightstyle = ready_highlight
-
-# チェック
-
-check_img = kml.addfile("check.png")
-
-# スタイル
-check_normal = simplekml.Style()
-check_normal.iconstyle.scale = 1
-check_normal.iconstyle.icon.href = check_img
-
-# スタイル
-check_highlight = simplekml.Style()
-check_highlight.iconstyle.scale = 1
-check_highlight.iconstyle.icon.href = check_img
-
-check_stylemap = simplekml.StyleMap()
-check_stylemap.normalstyle = check_normal
-check_stylemap.highlightstyle = check_highlight
-
-# スタイルマップに登録
-
-kml.document.stylemaps.append(open_stylemap)
-kml.document.stylemaps.append(close_stylemap)
-kml.document.stylemaps.append(ready_stylemap)
-kml.document.stylemaps.append(check_stylemap)
+    kml.document.stylemaps.append(kmlstylemap)
 
 fol = kml.newfolder()
 
@@ -194,11 +142,32 @@ for i, r in df.iterrows():
 
     enb_lcid = r["eNB-LCID"] or "unknown"
 
+    tag_map = f'<p><a href="https://www.google.com/maps?layer=c&cbll={r["緯度"]},{r["経度"]}" target="_blank">{r["場所"]}</a></p>'
+
+    d = {
+        "text": f'○新規開局\r\n\r\n【場所】\r\n{r["場所"]}\r\n({r["緯度"]}, {r["経度"]})\r\n\r\n【基地局】\r\n・eNB-LCID: 737XXX-X,X,X\r\n・PCI: XX,XX,XX\r\n\r\n【地図】\r\nhttps://www.google.co.jp/maps?q={r["緯度"]},{r["経度"]}',
+        "hashtags": "楽天モバイル,基地局",
+    }
+
+    url_twit = urllib.parse.urlunparse(
+        ("https", "twitter.com", "/intent/tweet", None, urllib.parse.urlencode(d), None)
+    )
+
+    tag_twit = (
+        f'<p><a href="{url_twit}" target="_blank">開局報告</a></p>'
+        if r["状況"] != "open"
+        else ""
+    )
+
     fg1.add_child(
         folium.Marker(
             location=[r["緯度"], r["経度"]],
             popup=folium.Popup(
-                f'<p><a href="https://www.google.com/maps?layer=c&cbll={r["緯度"]},{r["経度"]}" target="_blank">{r["場所"]}</a></p>',
+                "\n\n".join(
+                    [
+                        tag_map,
+                    ].strip()
+                ),
                 max_width=300,
             ),
             tooltip=f'{r["場所"]}',
