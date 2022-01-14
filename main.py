@@ -163,11 +163,7 @@ for i, r in df.iterrows():
         folium.Marker(
             location=[r["緯度"], r["経度"]],
             popup=folium.Popup(
-                "\n\n".join(
-                    [
-                        tag_map,
-                    ]
-                ).strip(),
+                "\n\n".join([tag_map, tag_twit]).strip(),
                 max_width=300,
             ),
             tooltip=f'{r["場所"]}',
