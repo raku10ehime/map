@@ -150,7 +150,7 @@ for i, r in df.iterrows():
 
     tag_map = f'<p><a href="https://www.google.com/maps?layer=c&cbll={r["緯度"]},{r["経度"]}" target="_blank">{r["場所"]}</a></p>'
 
-    text = "\r\n".join(
+    text = "\r\n\r\n".join(
         [
             "○新規開局",
             f"【日付】\r\n{dt_str}",
