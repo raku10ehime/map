@@ -166,8 +166,8 @@ for i, r in df.iterrows():
                 "\n\n".join(
                     [
                         tag_map,
-                    ].strip()
-                ),
+                    ]
+                ).strip(),
                 max_width=300,
             ),
             tooltip=f'{r["場所"]}',
