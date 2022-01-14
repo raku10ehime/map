@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+import datetime
 import pathlib
 import urllib.parse
 
@@ -9,6 +10,11 @@ from folium import plugins
 from folium.features import DivIcon
 
 url = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRE1NoYtNw1FmjRQ8wcdPkcE0Ryeoc2mfFkCQPHjzwL5CpwNKkLXnBl_F7c0LZjrtbLtRLH55ZVi6gQ/pub?gid=0&single=true&output=csv"
+
+JST = datetime.timezone(datetime.timedelta(hours=+9), "JST")
+dt_now = datetime.datetime.now(JST)
+
+dt_str = dt_now.strftime("%Y/%m/%d")
 
 df = (
     pd.read_csv(url, index_col=0, usecols=[0, 1, 2, 7, 8, 11, 12, 13, 14])
@@ -145,7 +151,7 @@ for i, r in df.iterrows():
     tag_map = f'<p><a href="https://www.google.com/maps?layer=c&cbll={r["緯度"]},{r["経度"]}" target="_blank">{r["場所"]}</a></p>'
 
     d = {
-        "text": f'○新規開局\r\n\r\n【場所】\r\n{r["場所"]}\r\n({r["緯度"]}, {r["経度"]})\r\n\r\n【基地局】\r\n・eNB-LCID: 737XXX-X,X,X\r\n・PCI: XX,XX,XX\r\n\r\n【地図】\r\nhttps://www.google.co.jp/maps?q={r["緯度"]},{r["経度"]}\r\n\r\n',
+        "text": f'○新規開局\r\n\r\n【日付】\r\n{dt_str}\r\n\r\n【名前】\r\n@name\r\n\r\n【場所】\r\n{r["場所"]}\r\n({r["緯度"]}, {r["経度"]})\r\n\r\n【基地局】\r\n・eNB-LCID: 737XXX-X,X,X\r\n・PCI: XX,XX,XX\r\n\r\n【地図】\r\nhttps://www.google.co.jp/maps?q={r["緯度"]},{r["経度"]}\r\n\r\n',
         "hashtags": "愛媛,楽天モバイル,基地局,開局",
     }
 
