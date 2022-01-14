@@ -150,8 +150,20 @@ for i, r in df.iterrows():
 
     tag_map = f'<p><a href="https://www.google.com/maps?layer=c&cbll={r["緯度"]},{r["経度"]}" target="_blank">{r["場所"]}</a></p>'
 
+    text = "\r\n".join(
+        [
+            "○新規開局",
+            f"【日付】\r\n{dt_str}",
+            "【名前】\r\n@name",
+            f"【場所】\r\n{r['場所']}\r\n({r['緯度']}, {r['経度']})",
+            "【基地局】\r\n・eNB-LCID: 737XXX-X,X,X\r\n・PCI: XX,XX,XX",
+            f'【地図】\r\nhttps://www.google.co.jp/maps?q={r["緯度"]},{r["経度"]}',
+            "",
+        ]
+    )
+
     d = {
-        "text": f'○新規開局\r\n\r\n【日付】\r\n{dt_str}\r\n\r\n【名前】\r\n@name\r\n\r\n【場所】\r\n{r["場所"]}\r\n({r["緯度"]}, {r["経度"]})\r\n\r\n【基地局】\r\n・eNB-LCID: 737XXX-X,X,X\r\n・PCI: XX,XX,XX\r\n\r\n【地図】\r\nhttps://www.google.co.jp/maps?q={r["緯度"]},{r["経度"]}\r\n\r\n',
+        "text": text,
         "hashtags": "愛媛,楽天モバイル,基地局,開局",
     }
 
