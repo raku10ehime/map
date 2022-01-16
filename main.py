@@ -17,7 +17,7 @@ dt_now = datetime.datetime.now(JST)
 dt_str = dt_now.strftime("%Y/%m/%d")
 
 df = (
-    pd.read_csv(url, index_col=0, usecols=[0, 1, 2, 7, 8, 11, 12, 13, 14])
+    pd.read_csv(url, index_col=0, usecols=[0, 1, 2, 7, 8, 11, 12, 13, 14], dtype=str)
     .dropna(how="all")
     .fillna("")
 )
