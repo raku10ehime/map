@@ -220,15 +220,12 @@ for i, r in df.iterrows():
 
     elif r["状況"] == "close":
         pnt.stylemap = kml.document.stylemaps[1]
-        pnt.description = "未開局"
 
     elif r["状況"] == "ready":
         pnt.stylemap = kml.document.stylemaps[2]
-        pnt.description = "開局確認"
 
     else:
         pnt.stylemap = kml.document.stylemaps[3]
-        pnt.description = "未確認"
 
     ex_data = simplekml.ExtendedData()
 
