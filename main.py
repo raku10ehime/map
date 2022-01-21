@@ -17,18 +17,24 @@ dt_now = datetime.datetime.now(JST)
 dt_str = dt_now.strftime("%Y/%m/%d")
 
 df = (
-    pd.read_csv(url, index_col=0, usecols=[0, 1, 2, 3, 7, 8, 11, 12, 13, 14], dtype=str)
+    pd.read_csv(url, index_col=0, usecols=[0, 1, 2, 3, 7, 8, 9, 10, 11, 12, 13, 14], dtype=str)
     .dropna(how="all")
     .fillna("")
 )
 
-df["color"] = df["状況"].replace(
-    {"open": "green", "close": "red", "ready": "orange", "check": "gray"}
-)
+flag5G = df["sub6"].str.isnumeric() | df["ミリ波"].str.isnumeric()
+
 df["icon"] = df["状況"].replace(
     {"open": "signal", "close": "remove", "ready": "wrench", "check": "search"}
 )
 df["icon"] = df["icon"].mask(df["設置タイプ"] == "屋内", "home")
+df["icon"] = df["icon"].mask(flag5G, "star")
+
+df["color"] = df["icon"].replace(
+    {"signal": "green", "remove": "red", "wrench": "orange", "search": "gray", "home": "lightgreen", "star": "lightblue"}
+)
+
+
 df["場所"] = df["場所"].str.strip()
 
 csv_path = pathlib.Path("map", "ehime.csv")
