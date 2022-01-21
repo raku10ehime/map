@@ -201,13 +201,13 @@ for i, r in df.iterrows():
         )
     )
     
-    radius = 78 if df["設置タイプ"] == "屋内" else 780
+    radius = 78 if r["設置タイプ"] == "屋内" else 780
 
     fg3.add_child(
         folium.Circle(
             location=[r["緯度"], r["経度"]],
             popup=folium.Popup(f"<p>{enb_lcid}</p>", max_width=300),
-            radius=780,
+            radius=radius,
             color=r["color"],
         )
     )
