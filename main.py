@@ -167,7 +167,7 @@ for i, r in df.iterrows():
     
     text = "\r\n\r\n".join(
         [
-            "○{status}",
+            f"○{status}",
             f"【日付】\r\n{dt_str}",
             "【名前】\r\n@name",
             f"【場所】\r\n{r['場所']}\r\n({r['緯度']}, {r['経度']})",
