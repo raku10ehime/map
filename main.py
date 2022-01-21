@@ -200,6 +200,8 @@ for i, r in df.iterrows():
             ),
         )
     )
+    
+    radius = 78 if df["設置タイプ"] == "屋内" else 780
 
     fg3.add_child(
         folium.Circle(
