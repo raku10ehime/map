@@ -36,7 +36,7 @@ df["場所"] = df["場所"].str.strip()
 flag5G = df["sub6"].str.isnumeric() | df["ミリ波"].str.isnumeric()
 
 df["icon"] = df["icon"].mask(flag5G, "bell")
-df["color"] = df["color"].mask(flag5G & (df["状況"] == "open"), "darkpurple")
+df["color"] = df["color"].mask(flag5G & (df["状況"] == "open"), "blue")
 df["場所"] = df["場所"].mask(flag5G, "【5G】" + df["場所"])
 
 # 屋内
