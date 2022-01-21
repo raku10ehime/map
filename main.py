@@ -36,7 +36,7 @@ df["場所"] = df["場所"].str.strip()
 flag5G = df["sub6"].str.isnumeric() | df["ミリ波"].str.isnumeric()
 
 df["icon"] = df["icon"].mask(flag5G, "bell")
-df["color"] = df["color"].mask(flag5G & (df["状況"] == "open"), "blue")
+df["color"] = df["color"].mask(flag5G & (df["状況"] == "open"), "darkblue")
 df["場所"] = df["場所"].mask(flag5G, "【5G】" + df["場所"])
 
 # 屋内
@@ -163,7 +163,7 @@ for i, r in df.iterrows():
 
     tag_map = f'<p><a href="https://www.google.com/maps?layer=c&cbll={r["緯度"]},{r["経度"]}" target="_blank">{r["場所"]}</a></p>'
 
-    status = "新規開局" if r["状況"] == "open" else "報告"
+    status = "報告" if r["状況"] == "open" else "新規開局"
     
     text = "\r\n\r\n".join(
         [
