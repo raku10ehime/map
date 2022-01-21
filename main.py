@@ -30,16 +30,18 @@ df["icon"] = df["状況"].replace(
     {"open": "signal", "close": "remove", "ready": "wrench", "check": "search"}
 )
 
-flag5G = df["sub6"].str.isnumeric() | df["ミリ波"].str.isnumeric()
+df["場所"] = df["場所"].str.strip()
 
 # 5G
+flag5G = df["sub6"].str.isnumeric() | df["ミリ波"].str.isnumeric()
+
 df["icon"] = df["icon"].mask(flag5G, "bell")
 df["color"] = df["color"].mask(flag5G & (df["状況"] == "open"), "darkpurple")
+df["場所"] = df["場所"].mask(flag5G, "【5G】" + df["場所"])
 
 # 屋内
 df["icon"] = df["icon"].mask(df["設置タイプ"] == "屋内", "home")
-
-df["場所"] = df["場所"].str.strip()
+df["場所"] = df["場所"].mask(f["設置タイプ"] == "屋内", "【屋内】" + df["場所"])
 
 csv_path = pathlib.Path("map", "ehime.csv")
 df.to_csv(csv_path, encoding="utf_8_sig")
