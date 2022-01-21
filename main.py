@@ -28,6 +28,7 @@ df["color"] = df["状況"].replace(
 df["icon"] = df["状況"].replace(
     {"open": "signal", "close": "remove", "ready": "wrench", "check": "search"}
 )
+df["icon"] = df["icon"].mask(df["設置タイプ"] == "屋内", "home")
 df["場所"] = df["場所"].str.strip()
 
 csv_path = pathlib.Path("map", "ehime.csv")
