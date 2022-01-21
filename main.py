@@ -34,6 +34,7 @@ flag5G = df["sub6"].str.isnumeric() | df["ミリ波"].str.isnumeric()
 
 # 5G
 df["icon"] = df["icon"].mask(flag5G, "bell")
+df["color"] = df["color"].mask(flag5G & (df["状況"] == "open"), "lightgreen")
 
 # 屋内
 df["icon"] = df["icon"].mask(df["設置タイプ"] == "屋内", "home")
