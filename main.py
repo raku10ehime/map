@@ -239,6 +239,8 @@ for i, r in df.iterrows():
 
     else:
         pnt.stylemap = kml.document.stylemaps[3]
+        
+    r.drop(labels=["icon", "color"], inplace=True)
 
     ex_data = simplekml.ExtendedData()
 
