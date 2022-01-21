@@ -27,13 +27,13 @@ df["icon"] = df["状況"].replace(
 )
 
 # 5G
-df["icon"] = df["icon"].mask((df["sub6"].str.isnumeric() | df["ミリ波"].str.isnumeric()), "door")
+df["icon"] = df["icon"].mask((df["sub6"].str.isnumeric() | df["ミリ波"].str.isnumeric()), "bell")
 
 # 屋内
 df["icon"] = df["icon"].mask(df["設置タイプ"] == "屋内", "home")
 
 df["color"] = df["icon"].replace(
-    {"signal": "green", "remove": "red", "wrench": "orange", "search": "gray", "home": "darkgreen", "door": "lightgreen"}
+    {"signal": "green", "remove": "red", "wrench": "orange", "search": "gray", "home": "beige", "bell": "darkgreen"}
 )
 
 df["場所"] = df["場所"].str.strip()
