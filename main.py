@@ -34,7 +34,7 @@ flag5G = df["sub6"].str.isnumeric() | df["ミリ波"].str.isnumeric()
 
 # 5G
 df["icon"] = df["icon"].mask(flag5G, "bell")
-df["color"] = df["color"].mask(flag5G & (df["状況"] == "open"), "lightgreen")
+df["color"] = df["color"].mask(flag5G & (df["状況"] == "open"), "purple")
 
 # 屋内
 df["icon"] = df["icon"].mask(df["設置タイプ"] == "屋内", "home")
@@ -161,9 +161,11 @@ for i, r in df.iterrows():
 
     tag_map = f'<p><a href="https://www.google.com/maps?layer=c&cbll={r["緯度"]},{r["経度"]}" target="_blank">{r["場所"]}</a></p>'
 
+    status = "新規開局" if r["状況"] == "open" else "報告"
+    
     text = "\r\n\r\n".join(
         [
-            "○新規開局",
+            "○{status}",
             f"【日付】\r\n{dt_str}",
             "【名前】\r\n@name",
             f"【場所】\r\n{r['場所']}\r\n({r['緯度']}, {r['経度']})",
@@ -182,11 +184,7 @@ for i, r in df.iterrows():
         ("https", "twitter.com", "/intent/tweet", None, urllib.parse.urlencode(d), None)
     )
 
-    tag_twit = (
-        f'<p><a href="{url_twit}" target="_blank">[開局報告]</a></p>'
-        if r["状況"] != "open"
-        else ""
-    )
+    tag_twit = f'<p><a href="{url_twit}" target="_blank">[Twitterで報告]</a></p>'
 
     fg1.add_child(
         folium.Marker(
