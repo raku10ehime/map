@@ -35,7 +35,7 @@ df["場所"] = df["場所"].str.strip()
 # 5G
 flag5G = df["sub6"].str.isnumeric() | df["ミリ波"].str.isnumeric()
 
-df["icon"] = df["icon"].mask(flag5G, "bell")
+df["icon"] = df["icon"].mask(flag5G, "circle-arrow-up")
 df["color"] = df["color"].mask(flag5G & (df["状況"] == "open"), "darkblue")
 df["場所"] = df["場所"].mask(flag5G, "【5G】" + df["場所"])
 
