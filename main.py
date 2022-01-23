@@ -172,7 +172,6 @@ for i, r in df.iterrows():
         [
             f"○{status}",
             f"【日付】\r\n{dt_str}",
-            "【名前】\r\n@name",
             f"【場所】\r\n{r['場所']}\r\n({r['緯度']}, {r['経度']})",
             f"【基地局】\r\n・eNB-LCID: {enb_lcid}\r\n・PCI: {pci}",
             f'【地図】\r\nhttps://www.google.co.jp/maps?q={r["緯度"]},{r["経度"]}',
