@@ -17,7 +17,9 @@ dt_now = datetime.datetime.now(JST)
 dt_str = dt_now.strftime("%Y/%m/%d")
 
 df = (
-    pd.read_csv(url, index_col=0, usecols=[0, 1, 2, 3, 7, 8, 9, 10, 11, 12, 13, 14], dtype=str)
+    pd.read_csv(
+        url, index_col=0, usecols=[0, 1, 2, 3, 7, 8, 9, 10, 11, 12, 13, 14], dtype=str
+    )
     .dropna(how="all")
     .fillna("")
 )
@@ -159,19 +161,20 @@ for i, r in df.iterrows():
 
     # folium
 
-    enb_lcid = r["eNB-LCID"] or "unknown"
+    enb_lcid = r["eNB-LCID"] or "737XXX-X,X,X"
+    pci = r["PCI"] or "XX,XX,XX"
 
     tag_map = f'<p><a href="https://www.google.com/maps?layer=c&cbll={r["緯度"]},{r["経度"]}" target="_blank">{r["場所"]}</a></p>'
 
     status = "報告" if r["状況"] == "open" else "新規開局"
-    
+
     text = "\r\n\r\n".join(
         [
             f"○{status}",
             f"【日付】\r\n{dt_str}",
             "【名前】\r\n@name",
             f"【場所】\r\n{r['場所']}\r\n({r['緯度']}, {r['経度']})",
-            "【基地局】\r\n・eNB-LCID: 737XXX-X,X,X\r\n・PCI: XX,XX,XX",
+            f"【基地局】\r\n・eNB-LCID: {enb_lcid}\r\n・PCI: {pci}",
             f'【地図】\r\nhttps://www.google.co.jp/maps?q={r["緯度"]},{r["経度"]}',
             "",
         ]
@@ -200,6 +203,8 @@ for i, r in df.iterrows():
         )
     )
 
+    enb_lcid = r["eNB-LCID"] or "unknown"
+
     fg2.add_child(
         folium.Marker(
             location=[r["緯度"], r["経度"]],
@@ -210,7 +215,7 @@ for i, r in df.iterrows():
             ),
         )
     )
-    
+
     radius = 78 if r["設置タイプ"] == "屋内" else 780
 
     fg3.add_child(
@@ -239,7 +244,7 @@ for i, r in df.iterrows():
 
     else:
         pnt.stylemap = kml.document.stylemaps[3]
-        
+
     r.drop(labels=["icon", "color"], inplace=True)
 
     ex_data = simplekml.ExtendedData()
