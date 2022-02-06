@@ -34,6 +34,9 @@ df["icon"] = df["状況"].replace(
 
 df["場所"] = df["場所"].str.strip()
 
+df["緯度"] = df["緯度"].astype(float)
+df["経度"] = df["経度"].astype(float)
+
 # 5G
 flag5G = df["sub6"].str.isnumeric() | df["ミリ波"].str.isnumeric()
 
