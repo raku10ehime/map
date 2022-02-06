@@ -77,7 +77,7 @@ folium.raster_layers.TileLayer(
     "https://{s}.google.com/vt/lyrs=s,h&x={x}&y={y}&z={z}",
     subdomains=["mt0", "mt1", "mt2", "mt3"],
     name="Google Map(航空写真)",
-    attr="<a href='https://developers.google.com/maps/documentation' target='_blank'>© Google</a>",
+    attr="<a href='https://developers.google.com/maps/documentation'>© Google</a>",
     opacity=0.8,
 ).add_to(map)
 
@@ -164,7 +164,7 @@ for i, r in df.iterrows():
     enb_lcid = r["eNB-LCID"] or "737XXX-X,X,X"
     pci = r["PCI"] or "XX,XX,XX"
 
-    tag_map = f'<p><a href="https://www.google.com/maps?layer=c&cbll={r["緯度"]},{r["経度"]}" target="_blank">{r["場所"]}</a></p>'
+    tag_map = f'<p><a href="https://www.google.com/maps?layer=c&cbll={r["緯度"]},{r["経度"]}" target="_blank" rel="noopener noreferrer">{r["場所"]}</a></p>'
 
     status = "報告" if r["状況"] == "open" else "新規開局"
 
