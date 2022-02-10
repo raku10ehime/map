@@ -85,7 +85,7 @@ folium.raster_layers.TileLayer(
 ).add_to(map)
 
 folium.raster_layers.TileLayer(
-    name="楽天モバイル（直近）",
+    name="楽天モバイル（現在）",
     tiles="https://gateway-api.global.rakuten.com/dsd/geoserver/4g/mno_coverage_map/gwc/service/gmaps?LAYERS=mno_coverage_map:all_map&FORMAT=image/png&TRANSPARENT=TRUE&x={x}&y={y}&zoom={z}",
     fmt="image/png",
     attr="楽天モバイルエリア",
