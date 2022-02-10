@@ -93,6 +93,7 @@ folium.raster_layers.TileLayer(
     overlay=True,
     control=True,
     opacity=1,
+    show=False,
 ).add_to(map)
 
 folium.raster_layers.TileLayer(
@@ -104,7 +105,6 @@ folium.raster_layers.TileLayer(
     overlay=True,
     control=True,
     opacity=1,
-    show=False,
 ).add_to(map)
 
 folium.raster_layers.TileLayer(
