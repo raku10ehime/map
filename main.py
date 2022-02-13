@@ -158,7 +158,8 @@ fol = kml.newfolder()
 
 fg1 = folium.FeatureGroup(name="基地局").add_to(map)
 fg2 = folium.FeatureGroup(name="eNB-LCID").add_to(map)
-fg3 = folium.FeatureGroup(name="エリア").add_to(map)
+fg3 = folium.FeatureGroup(name="エリア（円）").add_to(map)
+fg4 = folium.FeatureGroup(name="エリア（塗）").add_to(map)
 
 for i, r in df.iterrows():
 
@@ -226,6 +227,17 @@ for i, r in df.iterrows():
             popup=folium.Popup(f"<p>{enb_lcid}</p>", max_width=300),
             radius=radius,
             color=r["color"],
+        )
+    )
+
+    fg4.add_child(
+        folium.Circle(
+            location=[r["緯度"], r["経度"]],
+            radius=radius,
+            color="black",
+            weight = 1,
+            fill=True,
+            fill_opacity=0.5,
         )
     )
 
