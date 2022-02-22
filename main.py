@@ -157,9 +157,9 @@ for icon in icons:
 fol = kml.newfolder()
 
 fg1 = folium.FeatureGroup(name="基地局").add_to(map)
-fg2 = folium.FeatureGroup(name="eNB-LCID").add_to(map)
-fg3 = folium.FeatureGroup(name="エリア（円）").add_to(map)
-fg4 = folium.FeatureGroup(name="エリア（塗）", show=False).add_to(map)
+fg2 = folium.FeatureGroup(name="エリア（円）").add_to(map)
+fg3 = folium.FeatureGroup(name="エリア（塗）", show=False).add_to(map)
+fg4 = folium.FeatureGroup(name="eNB-LCID").add_to(map)
 
 for i, r in df.iterrows():
 
@@ -208,20 +208,9 @@ for i, r in df.iterrows():
 
     enb_lcid = r["eNB-LCID"] or "unknown"
 
-    fg2.add_child(
-        folium.Marker(
-            location=[r["緯度"], r["経度"]],
-            icon=DivIcon(
-                icon_size=(110, 30),
-                icon_anchor=(55, -10),
-                html=f'<div style="text-align:center; font-size: 10pt; background-color:rgba(255,255,255,0.2)">{enb_lcid}</div>',
-            ),
-        )
-    )
-
     radius = 78 if r["設置タイプ"] == "屋内" else 780
 
-    fg3.add_child(
+    fg2.add_child(
         folium.Circle(
             location=[r["緯度"], r["経度"]],
             popup=folium.Popup(f"<p>{enb_lcid}</p>", max_width=300),
@@ -230,7 +219,7 @@ for i, r in df.iterrows():
         )
     )
 
-    fg4.add_child(
+    fg3.add_child(
         folium.Circle(
             location=[r["緯度"], r["経度"]],
             radius=radius,
@@ -241,6 +230,17 @@ for i, r in df.iterrows():
         )
     )
 
+    fg4.add_child(
+        folium.Marker(
+            location=[r["緯度"], r["経度"]],
+            icon=DivIcon(
+                icon_size=(110, 30),
+                icon_anchor=(55, -10),
+                html=f'<div style="text-align:center; font-size: 10pt; background-color:rgba(255,255,255,0.2)">{enb_lcid}</div>',
+            ),
+        )
+    )    
+    
     # fol
 
     pnt = fol.newpoint(name=r["場所"])
