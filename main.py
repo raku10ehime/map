@@ -204,7 +204,6 @@ for i, r in df.iterrows():
             tooltip=f'{r["場所"]}',
             icon=folium.Icon(color=r["color"], icon=r["icon"]),
             place=r["場所"],
-            enblcid=r["eNB-LCID"],
         )
     )
 
@@ -280,14 +279,7 @@ folium.plugins.Search(
     search_label="place",
 ).add_to(map)
 
-folium.plugins.Search(
-    layer=fg1,
-    geom_type="Point",
-    placeholder="eNB-LCID検索",
-    collapsed=True,
-    search_label="enblcid",
-).add_to(map)
-    
+   
 folium.LayerControl().add_to(map)
 
 map_path = pathlib.Path("map", "index.html")
