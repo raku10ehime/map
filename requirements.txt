@@ -2,4 +2,3 @@ folium
 lxml
 pandas
 simplekml
-git+https://github.com/iwpnd/folium-vector.git
