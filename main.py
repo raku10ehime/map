@@ -8,6 +8,7 @@ import pandas as pd
 import simplekml
 from folium import plugins
 from folium.features import DivIcon
+from folium_vector import VectorGridProtobuf
 
 url = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRE1NoYtNw1FmjRQ8wcdPkcE0Ryeoc2mfFkCQPHjzwL5CpwNKkLXnBl_F7c0LZjrtbLtRLH55ZVi6gQ/pub?gid=0&single=true&output=csv"
 
@@ -117,6 +118,23 @@ folium.raster_layers.TileLayer(
     control=True,
     opacity=1,
     show=False,
+).add_to(map)
+
+# auローミング
+
+options = {
+    "vectorTileLayerStyles": {
+        "rakuten": {
+            "fill": True,
+            "weight": 0,
+            "fillColor": "orange",
+            "fillOpacity": 0.4,
+        },
+    }
+}
+
+VectorGridProtobuf(
+    "https://area.uqcom.jp/api2/rakuten/{z}/{x}/{y}.mvt", "auローミング", options
 ).add_to(map)
 
 # 現在値
