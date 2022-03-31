@@ -120,22 +120,6 @@ folium.raster_layers.TileLayer(
     show=False,
 ).add_to(map)
 
-# auローミング
-
-options = {
-    "vectorTileLayerStyles": {
-        "rakuten": {
-            "fill": True,
-            "weight": 0,
-            "fillColor": "orange",
-            "fillOpacity": 0.4,
-        },
-    }
-}
-
-vc = VectorGridProtobuf("https://area.uqcom.jp/api2/rakuten/{z}/{x}/{y}.mvt", "auローミング", options)
-map.add_child(vc)
-
 # 現在値
 folium.plugins.LocateControl(position="bottomright").add_to(map)
 
@@ -286,6 +270,24 @@ for i, r in df.iterrows():
         ex_data.newdata(name=str(n), value=str(v))
 
     pnt.extendeddata = ex_data
+
+# auローミング
+
+VectorGridProtobuf
+
+options = {
+    "vectorTileLayerStyles": {
+        "rakuten": {
+            "fill": True,
+            "weight": 0,
+            "fillColor": "orange",
+            "fillOpacity": 0.4,
+        },
+    }
+}
+
+vc = VectorGridProtobuf("https://area.uqcom.jp/api2/rakuten/{z}/{x}/{y}.mvt", "auローミング", options)
+map.add_child(vc)
 
 # 検索
 folium.plugins.Search(
