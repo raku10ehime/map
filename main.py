@@ -8,7 +8,6 @@ import pandas as pd
 import simplekml
 from folium import plugins
 from folium.features import DivIcon
-from folium_vector import VectorGridProtobuf
 
 url = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRE1NoYtNw1FmjRQ8wcdPkcE0Ryeoc2mfFkCQPHjzwL5CpwNKkLXnBl_F7c0LZjrtbLtRLH55ZVi6gQ/pub?gid=0&single=true&output=csv"
 
@@ -270,24 +269,6 @@ for i, r in df.iterrows():
         ex_data.newdata(name=str(n), value=str(v))
 
     pnt.extendeddata = ex_data
-
-# auローミング
-
-VectorGridProtobuf
-
-options = {
-    "vectorTileLayerStyles": {
-        "rakuten": {
-            "fill": True,
-            "weight": 0,
-            "fillColor": "orange",
-            "fillOpacity": 0.4,
-        },
-    }
-}
-
-vc = VectorGridProtobuf("https://area.uqcom.jp/api2/rakuten/{z}/{x}/{y}.mvt", "auローミング", options)
-map.add_child(vc)
 
 # 検索
 folium.plugins.Search(
