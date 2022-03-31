@@ -133,9 +133,8 @@ options = {
     }
 }
 
-VectorGridProtobuf(
-    "https://area.uqcom.jp/api2/rakuten/{z}/{x}/{y}.mvt", "auローミング", options
-).add_to(map)
+vc = VectorGridProtobuf("https://area.uqcom.jp/api2/rakuten/{z}/{x}/{y}.mvt", "auローミング", options)
+map.add_child(vc)
 
 # 現在値
 folium.plugins.LocateControl(position="bottomright").add_to(map)
