@@ -225,7 +225,12 @@ for i, r in df.iterrows():
 
     enb_lcid = r["eNB-LCID"] or "unknown"
 
-    radius = 78 if r["設置タイプ"] == "屋内" else 780
+    radius = 780
+    
+    if r["設置タイプ"] == "屋内":
+        radius = 78
+    elif r["設置タイプ"] == "ピコセル":
+        radius = 312
 
     fg2.add_child(
         folium.Circle(
