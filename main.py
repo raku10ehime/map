@@ -49,6 +49,10 @@ df["場所"] = df["場所"].mask(flag5G, "【5G】" + df["場所"])
 df["icon"] = df["icon"].mask(df["設置タイプ"] == "屋内", "home")
 df["場所"] = df["場所"].mask(df["設置タイプ"] == "屋内", "【屋内】" + df["場所"])
 
+# ピコセル
+df["icon"] = df["icon"].mask(df["設置タイプ"] == "ピコセル", "folder-close")
+df["場所"] = df["場所"].mask(df["設置タイプ"] == "ピコセル", "【ピコセル】" + df["場所"])
+
 csv_path = pathlib.Path("map", "ehime.csv")
 df.to_csv(csv_path, encoding="utf_8_sig")
 
