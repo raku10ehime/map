@@ -57,6 +57,10 @@ df["場所"] = df["場所"].mask(df["設置タイプ"] == "ピコセル", "【�
 df["icon"] = df["icon"].mask(df["設置タイプ"] == "衛星", "globe")
 df["場所"] = df["場所"].mask(df["設置タイプ"] == "衛星", "【衛星】" + df["場所"])
 
+# au共用
+df["icon"] = df["icon"].mask(df["設置タイプ"] == "au共用", "text-background")
+df["場所"] = df["場所"].mask(df["設置タイプ"] == "au共用", "【au共用】" + df["場所"])
+
 csv_path = pathlib.Path("map", "ehime.csv")
 df.to_csv(csv_path, encoding="utf_8_sig")
 
