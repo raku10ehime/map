@@ -222,13 +222,13 @@ for i, r in df.iterrows():
 
     tag_twit = f'<p><a href="{url_twit}" target="_blank">[Twitterで報告]</a></p>'
     
-    tmp = pd.DataFrame(r.drop(labels=["color", "icon"]))
+    tmp = pd.DataFrame(r.drop(labels=["場所", "color", "icon"]))
 
     fg1.add_child(
         folium.Marker(
             location=[r["緯度"], r["経度"]],
             popup=folium.Popup(
-                "\n\n".join([tag_map, tag_twit, tmp.to_html(header=False)]).strip(),
+                "\n\n".join([tag_map, tmp.to_html(header=False), tag_twit]).strip(),
                 max_width=300,
             ),
             tooltip=f'{r["場所"]}',
