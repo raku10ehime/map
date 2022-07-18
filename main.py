@@ -10,7 +10,7 @@ from folium import plugins
 from folium.features import DivIcon
 from folium_vectorgrid import VectorGridProtobuf
 
-url = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRE1NoYtNw1FmjRQ8wcdPkcE0Ryeoc2mfFkCQPHjzwL5CpwNKkLXnBl_F7c0LZjrtbLtRLH55ZVi6gQ/pub?gid=0&single=true&output=csv"
+url = "https://docs.google.com/spreadsheets/d/e/2PACX-1vTuN5xiHhlnPTkv3auHkYLT9NPvvjayj5AdPrH5VBQdbELOzfONi236Vub6eSshv8jAxQw3V1rgbbgE/pub?gid=0&single=true&output=csv"
 
 JST = datetime.timezone(datetime.timedelta(hours=+9), "JST")
 dt_now = datetime.datetime.now(JST)
@@ -19,7 +19,7 @@ dt_str = dt_now.strftime("%Y/%m/%d")
 
 df = (
     pd.read_csv(
-        url, index_col=0, usecols=[0, 1, 2, 3, 7, 8, 9, 10, 11, 12, 13, 14], dtype=str
+        url, index_col=0, usecols=[1, 2, 3, 5, 8, 9, 10, 11, 14, 15, 17, 18], dtype=str
     )
     .dropna(how="all")
     .fillna("")
