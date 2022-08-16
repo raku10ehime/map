@@ -19,7 +19,7 @@ dt_str = dt_now.strftime("%Y/%m/%d")
 
 df = (
     pd.read_csv(
-        url, usecols=[1, 2, 3, 5, 8, 9, 10, 11, 14, 15, 17, 18], dtype=str
+        url, usecols=[1, 2, 3, 5, 8, 9, 10, 11, 12, 13, 15, 16], dtype=str
     )
     .dropna(how="all")
     .fillna("")
