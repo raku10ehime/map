@@ -15,8 +15,6 @@ url = "https://docs.google.com/spreadsheets/d/e/2PACX-1vTuN5xiHhlnPTkv3auHkYLT9N
 JST = datetime.timezone(datetime.timedelta(hours=+9), "JST")
 dt_now = datetime.datetime.now(JST)
 
-update = "20220404"
-
 dt_str = dt_now.strftime("%Y/%m/%d")
 
 df = (
@@ -101,7 +99,7 @@ folium.raster_layers.TileLayer(
 
 folium.raster_layers.TileLayer(
     name="楽天モバイル（近々）",
-    tiles="https://gateway-api.global.rakuten.com/dsd/geoserver/4g2m/mno_coverage_map/gwc/service/gmaps?LAYERS=mno_coverage_map:all_map&FORMAT=image/png&TRANSPARENT=TRUE&x={x}&y={y}&zoom={z}&update={update}",
+    tiles="https://gateway-api.global.rakuten.com/dsd/geoserver/4g2m/mno_coverage_map/gwc/service/gmaps?LAYERS=mno_coverage_map:all_map&FORMAT=image/png&TRANSPARENT=TRUE&x={x}&y={y}&zoom={z}&update=20220404",
     fmt="image/png",
     attr="楽天モバイルエリア",
     tms=False,
@@ -113,7 +111,7 @@ folium.raster_layers.TileLayer(
 
 folium.raster_layers.TileLayer(
     name="楽天モバイル（予定）",
-    tiles="https://gateway-api.global.rakuten.com/dsd/geoserver/4g4m/mno_coverage_map/gwc/service/gmaps?LAYERS=mno_coverage_map:all_map&FORMAT=image/png&TRANSPARENT=TRUE&x={x}&y={y}&zoom={z}&update={update}",
+    tiles="https://gateway-api.global.rakuten.com/dsd/geoserver/4g4m/mno_coverage_map/gwc/service/gmaps?LAYERS=mno_coverage_map:all_map&FORMAT=image/png&TRANSPARENT=TRUE&x={x}&y={y}&zoom={z}&update=20220404",
     fmt="image/png",
     attr="楽天モバイルエリア",
     tms=False,
@@ -124,7 +122,7 @@ folium.raster_layers.TileLayer(
 
 folium.raster_layers.TileLayer(
     name="楽天モバイル5G",
-    tiles="https://gateway-api.global.rakuten.com/dsd/geoserver/5g/mno_coverage_map/gwc/service/gmaps?LAYERS=mno_coverage_map:all_map&FORMAT=image/png&TRANSPARENT=TRUE&x={x}&y={y}&zoom={z}&update={update}",
+    tiles="https://gateway-api.global.rakuten.com/dsd/geoserver/5g/mno_coverage_map/gwc/service/gmaps?LAYERS=mno_coverage_map:all_map&FORMAT=image/png&TRANSPARENT=TRUE&x={x}&y={y}&zoom={z}&update=20220404",
     fmt="image/png",
     attr="楽天モバイルエリア",
     tms=False,
