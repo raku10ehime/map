@@ -171,7 +171,7 @@ fol = kml.newfolder()
 
 fg0 = folium.FeatureGroup(name="パートナーエリア", show=False).add_to(map)
 fg1 = folium.FeatureGroup(name="基地局").add_to(map)
-fg2 = folium.FeatureGroup(name="エリア（円）").add_to(map)
+fg2 = folium.FeatureGroup(name="エリア（円）", show=False).add_to(map)
 fg3 = folium.FeatureGroup(name="エリア（塗）", show=False).add_to(map)
 fg4 = folium.FeatureGroup(name="eNB-LCID").add_to(map)
 
