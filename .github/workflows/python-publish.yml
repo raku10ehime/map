@@ -25,7 +25,6 @@ jobs:
     - name: Run script
       run: |
         python main.py
-        python musen.py
     - name: deploy
       uses: peaceiris/actions-gh-pages@v3
       with:
