@@ -8,7 +8,7 @@ import pandas as pd
 import simplekml
 from folium import plugins
 from folium.features import DivIcon
-from folium_vectorgrid import VectorGridProtobuf
+from folium_vectortilelayer import VectorTileLayer
 
 url = "https://docs.google.com/spreadsheets/d/e/2PACX-1vTuN5xiHhlnPTkv3auHkYLT9NPvvjayj5AdPrH5VBQdbELOzfONi236Vub6eSshv8jAxQw3V1rgbbgE/pub?gid=0&single=true&output=csv"
 
@@ -186,7 +186,7 @@ options = {
     }
 }
 
-vc = VectorGridProtobuf("https://area.uqcom.jp/api2/rakuten/{z}/{x}/{y}.mvt", "auローミング", options)
+vc = VectorTileLayer("https://area.uqcom.jp/api2/rakuten/{z}/{x}/{y}.mvt", "auローミング", options)
 fg0.add_child(vc)
 
 for i, r in df.iterrows():
