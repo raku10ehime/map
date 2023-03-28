@@ -214,7 +214,7 @@ for i, r in df.iterrows():
     
     escaped_text = html.escape(text)
     
-    tag_clip = f'<p><textarea id="myInput">{escaped_text}</textarea><br><button onclick="myFunction()">Copy location</button></p>'
+    tag_clip = f'<p><textarea id="myInput">{escaped_text}</textarea></p><p><button onclick="myFunction()">Copy location</button></p>'
 
     tmp = pd.DataFrame(r.drop(labels=["場所", "color", "icon"]))
 
