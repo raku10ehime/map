@@ -201,14 +201,13 @@ for i, r in df.iterrows():
 
     status = "報告" if r["状況"] == "open" else "新規開局"
 
-    text = "\r\n\r\n".join(
+    text = "<br />".join(
         [
             f"○{status}",
-            f"【日付】\r\n{dt_str}",
-            f"【場所】\r\n{r['場所']}\r\n({r['緯度']}, {r['経度']})",
-            f"【基地局】\r\n・eNB-LCID: {enb_lcid}\r\n・PCI: {pci}",
-            f'【地図】\r\nhttps://www.google.co.jp/maps?q={r["緯度"]},{r["経度"]}',
-            "",
+            f"【日付】<br />{dt_str}",
+            f"【場所】<br />{r['場所']}<br />({r['緯度']}, {r['経度']})",
+            f"【基地局】<br />・eNB-LCID: {enb_lcid}<br />・PCI: {pci}",
+            f'【地図】<br />https://www.google.co.jp/maps?q={r["緯度"]},{r["経度"]}',
         ]
     )
     
@@ -220,7 +219,7 @@ for i, r in df.iterrows():
         folium.Marker(
             location=[r["緯度"], r["経度"]],
             popup=folium.Popup(
-                "\n\n".join([tag_map, tmp.to_html(header=False), tag_clip]).strip(),
+                "\n\n".join([tag_map, tag_clip, tmp.to_html(header=False)]).strip(),
                 max_width=300,
             ),
             tooltip=f'{r["場所"]}',
