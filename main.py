@@ -202,12 +202,12 @@ for i, r in df.iterrows():
 
     status = "報告" if r["状況"] == "open" else "新規開局"
 
-    text = "\r\n\r\n".join(
+    text = "\r\r".join(
         [
             f"○{status}",
-            f"【日付】\r\n{dt_str}",
-            f"【場所】\r\n{r['場所']}\r\n({r['緯度']}, {r['経度']})",
-            f"【基地局】\r\n・eNB-LCID: {enb_lcid}\r\n・PCI: {pci}",
+            f"【日付】\r{dt_str}",
+            f"【場所】\r{r['場所']}\r({r['緯度']}, {r['経度']})",
+            f"【基地局】\r・eNB-LCID: {enb_lcid}\r・PCI: {pci}",
             f'【地図】\r\nhttps://www.google.co.jp/maps?q={r["緯度"]},{r["経度"]}',
         ]
     )
