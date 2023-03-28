@@ -6,6 +6,7 @@ import urllib.parse
 import folium
 import pandas as pd
 import simplekml
+import jinja2
 from folium import plugins
 from folium.features import DivIcon
 from folium_vectortilelayer import VectorTileLayer
@@ -210,25 +211,16 @@ for i, r in df.iterrows():
             "",
         ]
     )
-
-    d = {
-        "text": text,
-        "hashtags": "愛媛,楽天モバイル,基地局,開局",
-    }
-
-    url_twit = urllib.parse.urlunparse(
-        ("https", "twitter.com", "/intent/tweet", None, urllib.parse.urlencode(d), None)
-    )
-
-    tag_twit = f'<p><a href="{url_twit}" target="_blank">[Twitterで報告]</a></p>'
     
+    tag_clip = f'<input type="text" value="{text}" id="myInput"><button onclick="myFunction()">Copy location</button>'
+
     tmp = pd.DataFrame(r.drop(labels=["場所", "color", "icon"]))
 
     fg1.add_child(
         folium.Marker(
             location=[r["緯度"], r["経度"]],
             popup=folium.Popup(
-                "\n\n".join([tag_map, tmp.to_html(header=False), tag_twit]).strip(),
+                "\n\n".join([tag_map, tmp.to_html(header=False), tag_clip]).strip(),
                 max_width=300,
             ),
             tooltip=f'{r["場所"]}',
@@ -316,6 +308,23 @@ folium.plugins.Search(
 
    
 folium.LayerControl().add_to(map)
+
+el = folium.MacroElement().add_to(map)
+el._template = jinja2.Template("""
+    {% macro script(this, kwargs) %}
+    function myFunction() {
+      /* Get the text field */
+      var copyText = document.getElementById("myInput");
+
+      /* Select the text field */
+      copyText.select();
+      copyText.setSelectionRange(0, 99999); /* For mobile devices */
+
+      /* Copy the text inside the text field */
+      document.execCommand("copy");
+    }
+    {% endmacro %}
+""")
 
 map_path = pathlib.Path("map", "index.html")
 
