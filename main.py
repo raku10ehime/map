@@ -2,6 +2,7 @@
 import datetime
 import pathlib
 import urllib.parse
+import html
 
 import folium
 import pandas as pd
@@ -201,17 +202,19 @@ for i, r in df.iterrows():
 
     status = "報告" if r["状況"] == "open" else "新規開局"
 
-    text = "<br />".join(
+    text = "\n\n".join(
         [
             f"○{status}",
-            f"【日付】<br />{dt_str}",
-            f"【場所】<br />{r['場所']}<br />({r['緯度']}, {r['経度']})",
-            f"【基地局】<br />・eNB-LCID: {enb_lcid}<br />・PCI: {pci}",
+            f"【日付】\n{dt_str}",
+            f"【場所】\n{r['場所']}\n({r['緯度']}, {r['経度']})",
+            f"【基地局】\n・eNB-LCID: {enb_lcid}\n・PCI: {pci}",
             f'【地図】<br />https://www.google.co.jp/maps?q={r["緯度"]},{r["経度"]}',
         ]
     )
     
-    tag_clip = f'<input type="text" value="{text}" id="myInput"><button onclick="myFunction()">Copy location</button>'
+    escaped_text = html.escape(text)
+    
+    tag_clip = f'<textarea id="myInput">{escaped_text}</textarea><br><button onclick="myFunction()">Copy location</button>'
 
     tmp = pd.DataFrame(r.drop(labels=["場所", "color", "icon"]))
 
