@@ -202,19 +202,19 @@ for i, r in df.iterrows():
 
     status = "報告" if r["状況"] == "open" else "新規開局"
 
-    text = "\n\n".join(
+    text = "\r\n\r\n".join(
         [
             f"○{status}",
-            f"【日付】\n{dt_str}",
-            f"【場所】\n{r['場所']}\n({r['緯度']}, {r['経度']})",
-            f"【基地局】\n・eNB-LCID: {enb_lcid}\n・PCI: {pci}",
-            f'【地図】\nhttps://www.google.co.jp/maps?q={r["緯度"]},{r["経度"]}',
+            f"【日付】\r\n{dt_str}",
+            f"【場所】\r\n{r['場所']}\r\n({r['緯度']}, {r['経度']})",
+            f"【基地局】\r\n・eNB-LCID: {enb_lcid}\r\n・PCI: {pci}",
+            f'【地図】\r\nhttps://www.google.co.jp/maps?q={r["緯度"]},{r["経度"]}',
         ]
     )
     
     escaped_text = html.escape(text)
     
-    tag_clip = f'<textarea id="myInput">{text}</textarea><br><button onclick="myFunction()">Copy location</button>'
+    tag_clip = f'<textarea id="myInput">{escaped_text}</textarea><br><button onclick="myFunction()">Copy location</button>'
 
     tmp = pd.DataFrame(r.drop(labels=["場所", "color", "icon"]))
 
