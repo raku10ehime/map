@@ -204,7 +204,7 @@ for i, r in df.iterrows():
         [
             f"【日付】\r{dt_str}",
             f"【場所】\r{r['場所']}\r({r['緯度']}, {r['経度']})",
-            f"【基地局】\r・eNB-LCID: {enb_lcid}\r・PCI: {pci}\r・基地局ID: {r["基地局ID"]}",
+            f'【基地局】\r・eNB-LCID: {enb_lcid}\r・PCI: {pci}\r・基地局ID: {r["基地局ID"]}',
             f'【地図】\r\nhttps://www.google.co.jp/maps?q={r["緯度"]},{r["経度"]}',
             "#愛媛 #楽天モバイル #基地局",
         ]
