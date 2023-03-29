@@ -200,8 +200,6 @@ for i, r in df.iterrows():
 
     tag_map = f'<p><a href="https://www.google.com/maps?layer=c&cbll={r["緯度"]},{r["経度"]}" target="_blank" rel="noopener noreferrer">{r["場所"]}</a></p>'
 
-    status = "報告" if r["状況"] == "open" else "新規開局"
-
     text = "\r\r".join(
         [
             f"○{status}",
@@ -209,6 +207,7 @@ for i, r in df.iterrows():
             f"【場所】\r{r['場所']}\r({r['緯度']}, {r['経度']})",
             f"【基地局】\r・eNB-LCID: {enb_lcid}\r・PCI: {pci}",
             f'【地図】\r\nhttps://www.google.co.jp/maps?q={r["緯度"]},{r["経度"]}',
+            "#愛媛 #楽天モバイル #基地局",
         ]
     )
     
