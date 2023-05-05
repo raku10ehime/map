@@ -6,17 +6,24 @@
     <title>楽天モバイル基地局マップ（愛媛県）</title>
     <meta name="description" content="楽天モバイル" />
     <style>
-      #input {
-        display: none; /* inline-block */
+      body {
+          background-color: #f1f1f1;
       }
-      #output {
-        display: none; /* inline-block */
+      table {
+          border-collapse: collapse;
+          margin-top: .3em;
+          background-color: white;
       }
-      #map-canvas {
-        height: 600px;
+      td, th {
+          border: 1px solid gray;
+          font-size: 80%;
+          padding: 0 .4em;
       }
-      #footer {
-        font-size: 70%;
+      td:nth-child(2) {
+          width: 6em;
+      }
+      td:nth-child(3) {
+          width: 8em;
       }
     </style>
   </head>
