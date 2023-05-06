@@ -40,6 +40,11 @@ df["場所"] = df["場所"].str.strip()
 df["緯度"] = df["緯度"].astype(float)
 df["経度"] = df["経度"].astype(float)
 
+col = ["場所", "市区町村", "設置タイプ", "更新日時", "状況", "eNB-LCID", "PCI", "基地局ID", "sector", "sub6", "ミリ波", ]
+
+csv_path = pathlib.Path("map", "list.csv")
+df.reindex(columns=col).to_csv(csv_path, index=False, encoding="utf_8_sig")
+
 # 5G
 flag5G = df["sub6"].str.isnumeric() | df["ミリ波"].str.isnumeric()
 
@@ -69,11 +74,6 @@ df["場所"] = df["場所"].mask(df["設置タイプ"] == "au共用", "【au共�
 
 csv_path = pathlib.Path("map", "ehime.csv")
 df.to_csv(csv_path, encoding="utf_8_sig")
-
-col = ["場所", "市区町村", "設置タイプ", "更新日時", "状況", "eNB-LCID", "PCI", "基地局ID", "sector", "sub6", "ミリ波", ]
-
-csv_path = pathlib.Path("map", "list.csv")
-df.reindex(columns=col).to_csv(csv_path, index=False, encoding="utf_8_sig")
 
 map = folium.Map(
     tiles=None,
