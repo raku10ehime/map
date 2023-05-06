@@ -70,6 +70,11 @@ df["場所"] = df["場所"].mask(df["設置タイプ"] == "au共用", "【au共�
 csv_path = pathlib.Path("map", "ehime.csv")
 df.to_csv(csv_path, encoding="utf_8_sig")
 
+col = ["場所", "市区町村", "設置タイプ", "状況", "sector", "sub6", "ミリ波", "eNB-LCID", "PCI", "基地局ID", "更新日時"]
+
+csv_path = pathlib.Path("map", "list.csv")
+df.reindex(columns=col).to_csv(csv_path, index=False, encoding="utf_8_sig")
+
 map = folium.Map(
     tiles=None,
     location=[33.84167, 132.76611],
