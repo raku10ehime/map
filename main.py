@@ -40,8 +40,6 @@ df["場所"] = df["場所"].str.strip()
 df["緯度"] = df["緯度"].astype(float)
 df["経度"] = df["経度"].astype(float)
 
-df["更新日時"] = pd.to_datetime(df["更新日時"]).dt.strftime("%Y-%m-%dT%H:%M:%S")
-
 col = ["場所", "市区町村", "設置タイプ", "更新日時", "状況", "eNB-LCID", "PCI", "基地局ID", "sector", "sub6", "ミリ波", ]
 
 csv_path = pathlib.Path("map", "list.csv")
