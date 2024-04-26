@@ -48,7 +48,7 @@ df.reindex(columns=col).to_csv(csv_path, index=False, encoding="utf_8_sig")
 # 5G
 flag5G = df["sub6"].str.isnumeric() | df["ミリ波"].str.isnumeric()
 
-df["icon"] = df["icon"].mask(flag5G, "plane")
+df["icon"] = df["icon"].mask(flag5G, "upload")
 df["color"] = df["color"].mask(flag5G & (df["状況"] == "open"), "darkblue")
 df["場所"] = df["場所"].mask(flag5G, "【5G】" + df["場所"])
 
