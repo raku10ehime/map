@@ -10,7 +10,7 @@ import simplekml
 import jinja2
 from folium import plugins
 from folium.features import DivIcon
-from folium_vectortilelayer import VectorTileLayer
+from folium_vectorgrid import VectorGridProtobuf
 
 url = "https://docs.google.com/spreadsheets/d/e/2PACX-1vTuN5xiHhlnPTkv3auHkYLT9NPvvjayj5AdPrH5VBQdbELOzfONi236Vub6eSshv8jAxQw3V1rgbbgE/pub?gid=0&single=true&output=csv"
 
@@ -174,7 +174,7 @@ options = {
     }
 }
 
-vc = VectorTileLayer("https://area.uqcom.jp/api2/next_rakuten/{z}/{x}/{y}.mvt", "auローミング", options)
+vc = VectorGridProtobuf("https://area.uqcom.jp/api2/next_rakuten/{z}/{x}/{y}.mvt", "auローミング", options)
 fg0.add_child(vc)
 
 for i, r in df.iterrows():
