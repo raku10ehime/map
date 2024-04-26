@@ -2,5 +2,5 @@ folium
 lxml
 pandas
 simplekml
-folium-vectortilelayer
+folium-vectorgrid
 Jinja2
