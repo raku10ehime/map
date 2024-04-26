@@ -28,11 +28,11 @@ df = (
 )
 
 df["color"] = df["状況"].replace(
-    {"open": "green", "close": "red", "ready": "orange", "check": "gray"}
+    {"open": "green", "close": "red", "ready": "orange", "check": "gray", "delete": "black"}
 )
 
 df["icon"] = df["状況"].replace(
-    {"open": "signal", "close": "trash", "ready": "wrench", "check": "search"}
+    {"open": "signal", "close": "remove", "ready": "wrench", "check": "search", "delete": "trash"}
 )
 
 df["場所"] = df["場所"].str.strip()
