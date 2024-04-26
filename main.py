@@ -174,7 +174,7 @@ options = {
     }
 }
 
-vc = VectorTileLayer("https://area.uqcom.jp/api2/rakuten/{z}/{x}/{y}.mvt", "auローミング", options)
+vc = VectorTileLayer("https://area.uqcom.jp/api2/next_rakuten/{z}/{x}/{y}.mvt", "auローミング", options)
 fg0.add_child(vc)
 
 for i, r in df.iterrows():
