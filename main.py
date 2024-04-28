@@ -72,6 +72,9 @@ df["場所"] = df["場所"].mask(df["設置タイプ"] == "鉄塔", "【鉄塔�
 df["icon"] = df["icon"].mask(df["設置タイプ"] == "au共用", "adjust")
 df["場所"] = df["場所"].mask(df["設置タイプ"] == "au共用", "【au共用】" + df["場所"])
 
+# 撤去
+df["場所"] = df["場所"].mask(df["状況"] == "delete", "【撤去】" + df["場所"])
+
 csv_path = pathlib.Path("map", "ehime.csv")
 df.to_csv(csv_path, encoding="utf_8_sig")
 
