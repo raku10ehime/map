@@ -135,6 +135,7 @@ folium.plugins.Draw(
 ).add_to(map)
 
 kml = simplekml.Kml(name="Ehime")
+kml.document.name = "楽天モバイル基地局（愛媛県）"
 
 # アイコン設定
 
