@@ -79,12 +79,18 @@ csv_path = pathlib.Path("map", "ehime.csv")
 df.to_csv(csv_path, encoding="utf_8_sig")
 
 map = folium.Map(
-    tiles="https://cyberjapandata.gsi.go.jp/xyz/pale/{z}/{x}/{y}.png",
-    name="国土地理院",
-    attr='&copy; <a href="https://maps.gsi.go.jp/development/ichiran.html">国土地理院</a>',
+    tiles=None,
     location=[33.84167, 132.76611],
     zoom_start=12,
 )
+
+folium.raster_layers.TileLayer(
+    "https://{s}.google.com/vt/lyrs=s,h&x={x}&y={y}&z={z}",
+    subdomains=["mt0", "mt1", "mt2", "mt3"],
+    name="Google Map(航空写真)",
+    attr="<a href='https://developers.google.com/maps/documentation'>© Google</a>",
+    opacity=0.8,
+).add_to(map)
 
 folium.raster_layers.TileLayer(
     tiles="https://cyberjapandata.gsi.go.jp/xyz/blank/{z}/{x}/{y}.png",
@@ -100,11 +106,9 @@ folium.raster_layers.TileLayer(
 ).add_to(map)
 
 folium.raster_layers.TileLayer(
-    "https://{s}.google.com/vt/lyrs=s,h&x={x}&y={y}&z={z}",
-    subdomains=["mt0", "mt1", "mt2", "mt3"],
-    name="Google Map(航空写真)",
-    attr="<a href='https://developers.google.com/maps/documentation'>© Google</a>",
-    opacity=0.8,
+    tiles="https://cyberjapandata.gsi.go.jp/xyz/pale/{z}/{x}/{y}.png",
+    name="国土地理院",
+    attr='&copy; <a href="https://maps.gsi.go.jp/development/ichiran.html">国土地理院</a>',
 ).add_to(map)
 
 folium.raster_layers.TileLayer(
