@@ -79,16 +79,12 @@ csv_path = pathlib.Path("map", "ehime.csv")
 df.to_csv(csv_path, encoding="utf_8_sig")
 
 map = folium.Map(
-    tiles=None,
-    location=[33.84167, 132.76611],
-    zoom_start=12,
-)
-
-folium.raster_layers.TileLayer(
     tiles="https://cyberjapandata.gsi.go.jp/xyz/pale/{z}/{x}/{y}.png",
     name="国土地理院",
     attr='&copy; <a href="https://maps.gsi.go.jp/development/ichiran.html">国土地理院</a>',
-).add_to(map)
+    location=[33.84167, 132.76611],
+    zoom_start=12,
+)
 
 folium.raster_layers.TileLayer(
     tiles="https://cyberjapandata.gsi.go.jp/xyz/blank/{z}/{x}/{y}.png",
