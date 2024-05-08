@@ -228,6 +228,9 @@ for i, r in df.iterrows():
     elif r["設置タイプ"] == "ピコセル":
         radius = 312
 
+    if r["状況"] == "delete":
+        radius = 0
+
     fg2.add_child(
         folium.Circle(
             location=[r["緯度"], r["経度"]],
