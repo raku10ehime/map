@@ -139,7 +139,7 @@ kml.document.name = "楽天モバイル基地局（愛媛県）"
 
 # アイコン設定
 
-icons = ["open.png", "close.png", "ready.png", "check.png"]
+icons = ["open.png", "5g.png", "close.png", "ready.png", "check.png"]
 
 for icon in icons:
 
@@ -268,17 +268,20 @@ for i, r in df.iterrows():
     pnt.coords = [(r["経度"], r["緯度"])]
 
     if r["状況"] == "open":
-        pnt.stylemap = kml.document.stylemaps[0]
+        if r["icon"] == "upload":
+            pnt.stylemap = kml.document.stylemaps[1]
+        else:
+            pnt.stylemap = kml.document.stylemaps[0]
         pnt.description = f'eNB-LCID: {r["eNB-LCID"]}'
 
     elif r["状況"] == "close":
-        pnt.stylemap = kml.document.stylemaps[1]
-
-    elif r["状況"] == "ready":
         pnt.stylemap = kml.document.stylemaps[2]
 
-    else:
+    elif r["状況"] == "ready":
         pnt.stylemap = kml.document.stylemaps[3]
+
+    else:
+        pnt.stylemap = kml.document.stylemaps[4]
 
     r.drop(labels=["icon", "color"], inplace=True)
 
