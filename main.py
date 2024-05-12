@@ -123,6 +123,9 @@ folium.raster_layers.TileLayer(
     show=False,
 ).add_to(map)
 
+kml = simplekml.Kml(name="Ehime")
+kml.document.name = "楽天モバイル基地局（愛媛県）"
+
 # アイコン設定
 
 icons = ["open.png", "5g.png", "close.png", "ready.png", "check.png"]
@@ -300,9 +303,6 @@ folium.plugins.MeasureControl().add_to(map)
 folium.plugins.Draw(
     draw_options={"polygon": False, "rectangle": False, "circlemarker": False}
 ).add_to(map)
-
-kml = simplekml.Kml(name="Ehime")
-kml.document.name = "楽天モバイル基地局（愛媛県）"
 
 el = folium.MacroElement().add_to(map)
 el._template = jinja2.Template("""
