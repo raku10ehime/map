@@ -65,5 +65,5 @@ df6 = df2.reindex(columns=["ID", "投稿者", "備考", "URL"]).set_index("ID").
 # 結合
 df7 = df5.join(df6).join(collaborator)
 
-csv_path = pathlib.Path("ehimex.csv")
+csv_path = pathlib.Path("map", "ehimex.csv")
 df7.to_csv(csv_path, encoding="utf_8_sig")
