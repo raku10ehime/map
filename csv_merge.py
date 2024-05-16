@@ -30,7 +30,7 @@ df4["投稿者"] = df4["投稿者"].str.strip()
 
 # 協力者でひとつにまとめる
 collaborator = (
-    df4.groupby("ID")["投稿者"].apply(lambda x: " ".join()).rename("協力者")
+    df4.groupby("ID")["投稿者"].apply(lambda x: " ".join(x)).rename("協力者")
 )
 
 # 最新情報のみ残す
