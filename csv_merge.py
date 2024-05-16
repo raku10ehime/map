@@ -13,9 +13,30 @@ df2 = pd.read_csv(
     dtype={"sector": "Int64", "sub6": "Int64", "ミリ波": "Int64"},
 ).sort_values("更新日時")
 
+# ID、投稿者のみ
+df3 = df2[["ID", "投稿者"]].copy()
+
+# 投稿者なしは削除
+df3.dropna(subset="投稿者", inplace=True)
+
+# 複数人を分割
+df3["投稿者"] = df3["投稿者"].str.split()
+
+# 投稿者展開後、同一地点の重複を削除
+df4 = df3.explode("投稿者").drop_duplicates()
+
+# 前後の空白を削除
+df4["投稿者"] = df4["投稿者"].str.strip()
+
+# 協力者でひとつにまとめる
+collaborator = (
+    df4.groupby("ID")["投稿者"].apply(lambda x: " ".join()).rename("協力者")
+)
+
+# 最新情報のみ残す
 df2.drop_duplicates(subset="ID", keep="last", inplace=True)
 
-df3 = (
+df5 = (
     df1.reindex(
         columns=[
             "ID",
@@ -38,11 +59,11 @@ df3 = (
     .sort_index()
 )
 
-df4 = df2.reindex(columns=["ID", "投稿者", "備考", "URL"]).set_index("ID").sort_index()
+# 履歴はID、投稿者、備考、URLのみ
+df6 = df2.reindex(columns=["ID", "投稿者", "備考", "URL"]).set_index("ID").sort_index()
 
-df5 = df3.join(df4)
+# 結合
+df7 = df5.join(df6).join(collaborator)
 
-df5.sort_values(by="場所", inplace=True)
-
-csv_path = pathlib.Path("map", "ehimex.csv")
-df5.to_csv(csv_path, encoding="utf_8_sig")
+csv_path = pathlib.Path("ehimex.csv")
+df7.to_csv(csv_path, encoding="utf_8_sig")
