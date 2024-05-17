@@ -4,3 +4,4 @@ pandas
 simplekml
 folium-vectortilelayer
 Jinja2
+requests
