@@ -227,16 +227,16 @@ for i, r in df.iterrows():
             )
         )
 
-    fg3.add_child(
-        folium.Circle(
-            location=[r["緯度"], r["経度"]],
-            radius=radius,
-            color="black",
-            weight = 1,
-            fill=True,
-            fill_opacity=0.5,
+        fg3.add_child(
+            folium.Circle(
+                location=[r["緯度"], r["経度"]],
+                radius=radius,
+                color="black",
+                weight = 1,
+                fill=True,
+                fill_opacity=0.5,
+            )
         )
-    )
 
     fg4.add_child(
         folium.Marker(
