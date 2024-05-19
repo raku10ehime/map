@@ -137,7 +137,7 @@ df["場所"] = df["場所"].mask(df["状況"] == "delete", "【撤去】" + df["
 csv_path = pathlib.Path("map", "ehime.csv")
 df.to_csv(csv_path, encoding="utf_8_sig")
 
-df["URL"] = f'<a href={df["URL"]}>リンク</a>' if df["URL"].str.startswith("https://x.com/") else df["URL"]
+df["URL"] = df["URL"].mask(df["URL"].str.startswith("https://x.com/"), f'<a href={df["URL"]}>リンク</a>')
 
 map = folium.Map(
     tiles=None,
