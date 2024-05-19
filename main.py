@@ -217,17 +217,15 @@ for i, r in df.iterrows():
     elif r["設置タイプ"] == "ピコセル":
         radius = 312
 
-    if r["状況"] == "delete":
-        radius = 0
-
-    fg2.add_child(
-        folium.Circle(
-            location=[r["緯度"], r["経度"]],
-            popup=folium.Popup(f"<p>{enb_lcid}</p>", max_width=300),
-            radius=radius,
-            color=r["color"],
+    if r["状況"] != "delete":
+        fg2.add_child(
+            folium.Circle(
+                location=[r["緯度"], r["経度"]],
+                popup=folium.Popup(f"<p>{enb_lcid}</p>", max_width=300),
+                radius=radius,
+                color=r["color"],
+            )
         )
-    )
 
     fg3.add_child(
         folium.Circle(
