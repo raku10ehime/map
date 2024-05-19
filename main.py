@@ -15,13 +15,11 @@ from folium_vectortilelayer import VectorTileLayer
 def make_df():
     df1 = pd.read_csv(
         "https://docs.google.com/spreadsheets/d/e/2PACX-1vTuN5xiHhlnPTkv3auHkYLT9NPvvjayj5AdPrH5VBQdbELOzfONi236Vub6eSshv8jAxQw3V1rgbbgE/pub?gid=0&single=true&output=csv",
-        parse_dates=["更新日時"],
         dtype=str,
     )
     
     df2 = pd.read_csv(
         "https://docs.google.com/spreadsheets/d/e/2PACX-1vTuN5xiHhlnPTkv3auHkYLT9NPvvjayj5AdPrH5VBQdbELOzfONi236Vub6eSshv8jAxQw3V1rgbbgE/pub?gid=882951423&single=true&output=csv",
-        parse_dates=["更新日時"],
         dtype=str,
     ).sort_values("更新日時")
     
@@ -76,8 +74,6 @@ def make_df():
     
     # 結合
     df7 = df5.join(df6).join(collaborator)
-
-    df7["更新日時"] = df7["更新日時"].dt.strftime("%Y-%m-%d %H:%M")
 
     return df7.fillna("")
 
