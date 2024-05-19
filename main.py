@@ -16,13 +16,13 @@ def make_df():
     df1 = pd.read_csv(
         "https://docs.google.com/spreadsheets/d/e/2PACX-1vTuN5xiHhlnPTkv3auHkYLT9NPvvjayj5AdPrH5VBQdbELOzfONi236Vub6eSshv8jAxQw3V1rgbbgE/pub?gid=0&single=true&output=csv",
         parse_dates=["更新日時"],
-        dtype={"sector": "Int64", "sub6": "Int64", "ミリ波": "Int64"},
+        dtype=str,
     )
     
     df2 = pd.read_csv(
         "https://docs.google.com/spreadsheets/d/e/2PACX-1vTuN5xiHhlnPTkv3auHkYLT9NPvvjayj5AdPrH5VBQdbELOzfONi236Vub6eSshv8jAxQw3V1rgbbgE/pub?gid=882951423&single=true&output=csv",
         parse_dates=["更新日時"],
-        dtype={"sector": "Int64", "sub6": "Int64", "ミリ波": "Int64"},
+        dtype=str,
     ).sort_values("更新日時")
     
     # ID、投稿者のみ
