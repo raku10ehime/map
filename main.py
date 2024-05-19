@@ -77,7 +77,7 @@ def make_df():
     # 結合
     df7 = df5.join(df6).join(collaborator)
 
-    df7["更新日時"] = df7["更新日時"].dt.strftime("%Y-%m-%dT%H:%M")
+    df7["更新日時"] = df7["更新日時"].dt.strftime("%Y-%m-%d %H:%M")
 
     return df7.fillna("")
 
