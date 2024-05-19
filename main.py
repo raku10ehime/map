@@ -77,7 +77,7 @@ def make_df():
     # 結合
     df7 = df5.join(df6).join(collaborator)
 
-    return df7
+    return df7.fillna("")
 
 JST = datetime.timezone(datetime.timedelta(hours=+9), "JST")
 dt_now = datetime.datetime.now(JST)
@@ -259,7 +259,7 @@ for i, r in df.iterrows():
             location=[r["緯度"], r["経度"]],
             popup=folium.Popup(
                 "\n\n".join([tag_map, tmp.to_html(header=False), tag_clip]).strip(),
-                max_width=300,
+                max_width=400,
             ),
             tooltip=f'{r["場所"]}',
             icon=folium.Icon(color=r["color"], icon=r["icon"]),
