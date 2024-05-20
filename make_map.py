@@ -33,10 +33,11 @@ map = folium.Map(
 )
 
 folium.raster_layers.TileLayer(
-    tiles="https://cyberjapandata.gsi.go.jp/xyz/pale/{z}/{x}/{y}.png",
-    name="国土地理院",
-    attr='&copy; <a href="https://maps.gsi.go.jp/development/ichiran.html">国土地理院</a>',
-    overlay=False,
+    "https://{s}.google.com/vt/lyrs=s,h&x={x}&y={y}&z={z}",
+    subdomains=["mt0", "mt1", "mt2", "mt3"],
+    name="Google Map(航空写真)",
+    attr="<a href='https://developers.google.com/maps/documentation'>© Google</a>",
+    opacity=0.8,
 ).add_to(map)
 
 folium.raster_layers.TileLayer(
@@ -53,11 +54,10 @@ folium.raster_layers.TileLayer(
 ).add_to(map)
 
 folium.raster_layers.TileLayer(
-    "https://{s}.google.com/vt/lyrs=s,h&x={x}&y={y}&z={z}",
-    subdomains=["mt0", "mt1", "mt2", "mt3"],
-    name="Google Map(航空写真)",
-    attr="<a href='https://developers.google.com/maps/documentation'>© Google</a>",
-    opacity=0.8,
+    tiles="https://cyberjapandata.gsi.go.jp/xyz/pale/{z}/{x}/{y}.png",
+    name="国土地理院",
+    attr='&copy; <a href="https://maps.gsi.go.jp/development/ichiran.html">国土地理院</a>',
+    overlay=False,
 ).add_to(map)
 
 folium.raster_layers.TileLayer(
@@ -66,6 +66,7 @@ folium.raster_layers.TileLayer(
     fmt="image/png",
     attr="楽天モバイルエリア",
     tms=False,
+    overlay=True,
     control=True,
     opacity=1,
     show=False,
