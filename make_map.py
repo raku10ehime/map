@@ -35,43 +35,6 @@ map = folium.Map(
 folium.raster_layers.TileLayer(
     tiles="https://cyberjapandata.gsi.go.jp/xyz/pale/{z}/{x}/{y}.png",
     name="国土地理院",
-    attr='&copy; <a href="https://maps.gsi.go.jp/development/ichiran.html">国土地理院</a>'、ort html
-import pathlib
-
-import folium
-import folium.plugins
-import jinja2
-import pandas as pd
-from folium.features import DivIcon
-from folium_vectortilelayer import VectorTileLayer
-
-dt_now = pd.Timestamp.now(tz="Asia/Tokyo").tz_localize(None)
-dt_str = dt_now.strftime("%Y/%m/%d")
-
-p = pathlib.Path("map", "ehime.csv")
-
-df = pd.read_csv(p, dtype=str).fillna("")
-
-df["緯度"] = df["緯度"].astype(float)
-df["経度"] = df["経度"].astype(float)
-
-df["URL"] = df["URL"].apply(
-    lambda url: f'<a target="_blank" href="{url}">リンク</a>'
-    if url.startswith("https://x.com")
-    else url
-)
-
-df
-
-map = folium.Map(
-    tiles=None,
-    location=[33.84167, 132.76611],
-    zoom_start=12,
-)
-
-folium.raster_layers.TileLayer(
-    tiles="https://cyberjapandata.gsi.go.jp/xyz/pale/{z}/{x}/{y}.png",
-    name="国土地理院",
     attr='&copy; <a href="https://maps.gsi.go.jp/development/ichiran.html">国土地理院</a>',
     overlay=False,
 ).add_to(map)
