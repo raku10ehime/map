@@ -425,7 +425,7 @@
 788b816b,松山市来住町,松山市,コン柱,open,3,,,"737314-1,2,3","231,311,361",,33.8089968,132.803559,2022/06/01 00:00:00,@kmtt2012,,,@kmtt2012,green,signal
 78f04702,北宇和郡鬼北町大字沢松,鬼北町,コン柱,open,3,,,"737476-4,5,6","363,365,364",,33.270625,132.660025,2023/01/08 14:58:58,@kmtt2012,,https://x.com/kmtt2012/status/1611640041515941893,@amegokun @kmtt2012,green,signal
 793e5016,【5G】今治市大新田町五丁目,今治市,コン柱,open,3,1,3,"737378-1,2,3","86,114,340",,34.08093,132.989408,2022/06/01 00:00:00,@seaki @imabarizine,,,@seaki @imabarizine,darkblue,upload
-795e27fd,【撤去】今治市高橋①,今治市,コン柱,delete,,,,,,,34.039097,132.97306,2024/05/05 22:57:40,@imabarizine,撤去,https://x.com/raku10ehime/status/1787132128221856147,@seaki @imabarizine,black,trash
+795e27fd,今治市高橋①,今治市,コン柱,delete,,,,,,,34.039097,132.97306,2024/05/05 22:57:40,@imabarizine,撤去,https://x.com/raku10ehime/status/1787132128221856147,@seaki @imabarizine,black,trash
 7a3605f1,【ピコセル】東温市樋口①,東温市,ピコセル,open,1,,,752280-1,387,,33.805811,132.883144,2022/08/04 08:35:42,@MVp7WugssM0KObp,場所名に番号追加,https://x.com/MVp7WugssM0KObp/status/1526329696501510144,@MVp7WugssM0KObp,green,folder-close
 7a7afb82,西条市玉之江,西条市,コン柱,open,3,,,"737549-1,2,3","131,127,234",,33.910722,133.097295,2023/05/04 12:55:18,@imabarizine,eNB-LCID変更,https://x.com/raku10ehime/status/1654086790863790081,@llyd_nt @hals111 @imabarizine,green,signal
 7aa84121,松山市安城寺町②,松山市,コン柱,open,3,,,"737442-4,5,6","343,218,273",,33.88114974,132.7406504,2022/07/24 19:24:54,wankosa,開局,,wankosa,green,signal
@@ -601,13 +601,13 @@ b1a60058,今治市波止浜三丁目,今治市,屋上,open,3,,,"737487-6,7,8","3
 b1c22530,西予市城川町土居,西予市,コン柱,open,2,,,"737550-1,2","241,242",,33.386616,132.768916,2024/04/28 21:09:11,@saiseki56,eNB-LCID変更,https://x.com/saiseki56/status/1784423647895318869,@kmtt2012 @saiseki56,green,signal
 b1fef9c5,新居浜市船木⑥,新居浜市,コン柱,open,2,,,"737593-1,2","111,71",,33.931585,133.353922,2024/05/04 22:30:03,@imabarizine,開局,https://x.com/raku10ehime/status/1786781338856763685,@imabarizine,green,signal
 b225d2d8,喜多郡内子町福岡甲,内子町,コン柱,open,1,,,737557-1,4,CBSB838001266,33.501435,132.668613,2023/03/29 21:34:55,@saiseki56,新規開局,https://x.com/saiseki56/status/1640617497333493760,@saiseki56,green,signal
-b22f6b38,【撤去】松山市余戸中二丁目,松山市,コン柱,delete,,,,,,,33.813358,132.728678,2023/07/06 15:22:06,@saiseki56,徹去,,@kmtt2012 @saiseki56,black,trash
+b22f6b38,松山市余戸中二丁目,松山市,コン柱,delete,,,,,,,33.813358,132.728678,2023/07/06 15:22:06,@saiseki56,徹去,,@kmtt2012 @saiseki56,black,trash
 b3a18303,西宇和郡伊方町九町,伊方町,コン柱,open,3,,,"737473-4,5,6","129,131,130",,33.473652,132.307576,2023/01/10 19:51:27,@saiseki56,eNB-LCID変更,https://x.com/saiseki56/status/1612714744921853952,@kmtt2012 @saiseki56,green,signal
 b4ee94b6,今治市国分三丁目,今治市,コン柱,open,3,,,"737511-4,5,6","260,163,363",,34.027089,133.019527,2024/05/04 21:11:02,@imabarizine,eNB-LCID変更,https://x.com/raku10ehime/status/1650077935699886081,@seaki @imabarizine,green,signal
 b5a1bb2d,【5G】今治市波止浜,今治市,コン柱,open,3,3,1,"737487-3,4,5","179,178,177",,34.098534,132.971486,2024/04/29 01:16:47,@imabarizine,5G追加,https://x.com/raku10ehime/status/1784619417856577687,@seaki @imabarizine,darkblue,upload
 b5b88c2a,【ピコセル】東温市樋口②,東温市,ピコセル,open,1,,,752280-2,383,,33.80648048,132.88085,2022/08/04 08:38:40,@MVp7WugssM0KObp,,https://x.com/MVp7WugssM0KObp/status/1554969409382678528,@MVp7WugssM0KObp,green,folder-close
 b5bd0f0f,喜多郡内子町只海甲②,内子町,コン柱,open,1,,,737603-2,198,CBSB838001470,33.536278,132.703722,2024/05/18 18:42:40,@saiseki56,新規開局,https://x.com/saiseki56/status/1791701559359000977,@saiseki56,green,signal
-b66fd653,【撤去】宇和島市津島町高田②,宇和島市,コン柱,delete,,,,,,,33.120426,132.518774,2024/04/28 00:16:22,@kmtt2012,閉局,https://x.com/kmtt2012/status/1680504911719546881,@kmtt2012,black,trash
+b66fd653,宇和島市津島町高田②,宇和島市,コン柱,delete,,,,,,,33.120426,132.518774,2024/04/28 00:16:22,@kmtt2012,閉局,https://x.com/kmtt2012/status/1680504911719546881,@kmtt2012,black,trash
 b681ebab,西予市野村町野村③,西予市,コン柱,open,3,,,"737451-7,8,9","105,107,106",,33.361536,132.636079,2022/12/07 22:05:38,@saiseki56,,https://x.com/saiseki56/status/1600375594843541505,@saiseki56,green,signal
 b6b71ab2,【5G】西条市福武甲①,西条市,コン柱,open,3,1,2,"737515-4,5,6","167,166,165",,33.91194517,133.2016369,2023/05/04 20:52:27,@imabarizine,eNB-LCID変更,https://x.com/raku10ehime/status/1654101681402150912,@kmtt2012 @imabarizine,darkblue,upload
 b73172d1,伊予市大平乙,伊予市,コン柱,open,3,,,"737480-5,6,7","6,8,7",,33.711212,132.710826,2023/03/21 17:18:37,@saiseki56,eNB-LCID変更,https://x.com/saiseki56/status/1637737124333228032,@imabarizine @sfuruie0407 @saiseki56,green,signal
