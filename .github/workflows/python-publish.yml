@@ -25,6 +25,8 @@ jobs:
     - name: Run script
       run: |
         python main.py
+        python make_kmz.py
+        python make_map.py
     - name: deploy
       uses: peaceiris/actions-gh-pages@v4
       with:
