@@ -91,6 +91,8 @@ df.reindex(
         "sector",
         "sub6",
         "ミリ波",
+        "緯度",
+        "経度",
     ]
 ).to_csv(csv_path, index=False, encoding="utf_8_sig")
 
