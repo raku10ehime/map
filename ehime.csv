@@ -131,7 +131,7 @@
 2498afe2,東温市田窪②,東温市,コン柱,open,3,,,"737437-10,11,12","77,177,178",,33.7887411,132.8575634,2022/06/01 00:00:00,@MVp7WugssM0KObp,,,@MVp7WugssM0KObp,green,signal
 24bc6fa9,今治市宮窪町宮窪①,今治市,コン柱,open,3,,,"737450-7,8,9","269,249,250",,34.17168,133.074761,2022/11/28 21:17:27,@keitaimobtime,,https://x.com/keitaimobtime/status/1596866186855485440,@imabarizine @keitaimobtime,green,signal
 24d537c9,松山市永木町２丁目,松山市,屋上,open,2,,,"737577-1,2","75,166",,33.835454,132.774928,2023/05/10 15:27:10,@saiseki56,eNB-LCID変更,https://x.com/saiseki56/status/1656185034372702208,@saiseki56,green,signal
-25475c54,【5G】四国中央市川之江町②,四国中央市,コン柱,open,3,1,1,"737466-4,5,6","179,123,331",,34.018855,133.576226,2024/08/16 21:34:14,@imabarizine,5G追加,,@ene_gomi3R @kmtt2012 @imabarizine,darkblue,upload
+25475c54,【5G】四国中央市川之江町②,四国中央市,コン柱,open,3,1,1,"737466-4,5,6","179,123,331",,34.018855,133.576226,2024/08/16 21:34:14,@imabarizine,5G追加,https://x.com/raku10ehime/status/1824428461857051042,@ene_gomi3R @kmtt2012 @imabarizine,darkblue,upload
 254a4bc7,【衛星】西条市丹原町楠窪③,西条市,衛星,open,1,,,742219-1,1,,33.826333,133.050833,2024/06/16 08:37:23,@sfuruie0407,開局,https://x.com/sfuruie0407/status/1801887613659529664,@saiseki56 @sfuruie0407,green,globe
 25554ae6,伊予郡砥部町宮内③,砥部町,コン柱,open,3,,,"737558-4,5,6","200,55,174",,33.757587,132.79431,2023/03/17 22:15:44,@sfuruie0407,,https://x.com/sfuruie0407/status/1635893083387887617,@sfuruie0407,green,signal
 2578adcc,【5G】西予市宇和町新城,西予市,コン柱,open,3,1,3,"737527-1,2,3","188,186,187",,33.383049,132.531573,2023/04/22 10:15:23,@saiseki56,eNB-LCID変更,https://x.com/saiseki56/status/1649661063661772802,Googleフォーム094 @saiseki56,darkblue,upload
@@ -207,7 +207,7 @@
 3a02cc52,今治市玉川町畑寺,今治市,コン柱,ready,,,,,,,34.003801,132.947788,2024/05/19 15:16:17,@imabarizine,新規発見,https://x.com/raku10ehime/status/1792077293860643321,@imabarizine,orange,wrench
 3a933bd9,上浮穴郡久万高原町露峰①,久万高原町,コン柱,open,3,,,"737530-10,11,12","6,7,8",,33.615187,132.900104,2023/03/19 20:17:16,@kmtt2012,eNB-LCID変更,https://x.com/kmtt2012/status/1637256521024421888,@kmtt2012,green,signal
 3ae340af,今治市大三島町肥海①,今治市,コン柱,open,3,,,"737551-4,5,6","121,120,122",,34.275085,132.995968,2023/04/30 21:26:46,@imabarizine,開局,https://x.com/raku10ehime/status/1652670088041078786,@imabarizine,green,signal
-3b457f4e,松山市浅海原,松山市,コン柱,open,3,,,"737507-4,5,6","73,198,161",,34.008795,132.800748,2024/04/28 13:10:33,@saiseki56,eNB-LCID変更,https://x.com/saiseki56/status/1700389730024820939,@kmtt2012 @saiseki56,green,signal
+3b457f4e,【5G】松山市浅海原,松山市,コン柱,open,3,3,1,"737507-4,5,6","73,198,161",,34.008795,132.800748,2024/08/16 23:41:20,@imabarizine,5G追加,,@kmtt2012 @saiseki56 @imabarizine,darkblue,upload
 3b96c531,八幡浜市真網代②,八幡浜市,コン柱,open,3,,,"737605-6,7,8","1,3,286",,33.406475,132.40157,2024/04/28 19:30:13,@saiseki56,新規開局,https://x.com/saiseki56/status/1734813575326454109,@saiseki56,green,signal
 3bead56b,松山市石手白石,松山市,コン柱,open,3,,,"737564-1,2,3","39,353,292",,33.844784,132.804488,2023/05/10 12:45:40,@saiseki56,eNB-LCID変更,https://x.com/saiseki56/status/1656206268841992192,@kmtt2012 @saiseki56,green,signal
 3c460f6a,松山市南吉田町①,松山市,コン柱,open,3,,,"737563-4,5,6","233,90,106",,33.827539,132.71503,2023/03/27 20:37:02,@sfuruie0407,eNB-LCID変更,https://x.com/sfuruie0407/status/1639845261488058369,@kmtt2012 @sfuruie0407,green,signal
@@ -261,7 +261,7 @@
 4b9317a5,宇和島市吉田町南君②,宇和島市,コン柱,close,,,,,,,33.263628,132.513819,2022/06/01 00:00:00,@kmtt2012,,,@kmtt2012,red,remove
 4b9ff22f,大洲市菅田町菅田①,大洲市,コン柱,open,3,,,"737543-7,8,9","35,33,34",,33.509924,132.584769,2023/03/17 22:31:06,@saiseki56,eNB-LCID変更,https://x.com/saiseki56/status/1635874087003377664,@kmtt2012 @saiseki56,green,signal
 4bc4bc2d,上浮穴郡久万高原町上黒岩①,久万高原町,コン柱,open,1,,,737607-5,342,CBSB838001204,33.61962,132.96336,2024/05/09 20:42:56,@sfuruie0407,開局,https://x.com/sfuruie0407/status/1788488023459684447,@kmtt2012 @sfuruie0407,green,signal
-4bd9b5a9,松山市松末二丁目,松山市,コン柱,open,3,,,"737286-10,11,12","243,245,244",,33.82452506,132.7905841,2022/06/01 00:00:00,wankosa,,,wankosa,green,signal
+4bd9b5a9,【5G】松山市松末二丁目,松山市,コン柱,open,3,3,,"737286-10,11,12","243,245,244",CBSB838000132,33.824525,132.790584,2024/08/16 23:43:41,@imabarizine,5G追加,,wankosa @imabarizine,darkblue,upload
 4c4c0e5a,大洲市田口,大洲市,屋上,open,3,,,"737591-2,3,4","138,139,140",,33.515195,132.547422,2024/04/28 00:56:32,@saiseki56,新規開局,https://x.com/saiseki56/status/1693445984305717656,@saiseki56,green,signal
 4c4d5a6d,南宇和郡愛南町城辺甲③,愛南町,コン柱,open,3,,,"737443-3,4,5","358,359,357",,32.953284,132.572527,2023/04/29 00:07:41,@kmtt2012,,https://x.com/kmtt2012/status/1548499839419240450,@amegokun @kmtt2012,green,signal
 4c693175,宇和島市三間町是能,宇和島市,コン柱,open,1,,,737572-5,16,CBSB838001075,33.2841575,132.5792802,2024/04/28 14:13:26,@saiseki56,新規開局,https://x.com/saiseki56/status/1721062562257858918,@saiseki56,green,signal
@@ -584,7 +584,7 @@ ac2b3e75,西条市丹原町長野,西条市,コン柱,open,3,,,"737545-10,11,12"
 acb2270d,西予市宇和町明石,西予市,コン柱,open,3,,,"737522-4,5,6","114,115,116",,33.373231,132.528406,2023/04/22 10:21:11,@saiseki56,eNB-LCID変更,https://x.com/saiseki56/status/1649663168556441600,Googleフォーム095 @saiseki56,green,signal
 acd4a1eb,松山市西石井二丁目,松山市,コン柱,open,3,,,"737301-4,5,6","89,87,88",,33.81856524,132.7726035,2022/06/01 00:00:00,wankosa,,,wankosa,green,signal
 ace61d71,今治市松木,今治市,コン柱,open,3,,,"737511-7,8,9","346,125,294",,34.029208,133.004043,2024/05/05 22:52:56,@imabarizine,写真追加,https://x.com/raku10ehime/status/1787130759666659705,@seaki @imabarizine,green,signal
-ad9dde81,新居浜市立川町,新居浜市,コン柱,open,3,,,"737489-7,8,9","77,385,312",,33.909722,133.30862,2024/08/16 21:13:15,@imabarizine,eNB-LCID変更,,@imabarizine,green,signal
+ad9dde81,新居浜市立川町,新居浜市,コン柱,open,3,,,"737489-7,8,9","77,385,312",,33.909722,133.30862,2024/08/16 21:13:15,@imabarizine,eNB-LCID変更,https://x.com/raku10ehime/status/1824455259202392279,@imabarizine,green,signal
 adbda971,松山市余戸東一丁目,松山市,屋上,open,3,,,"737560-7,8,9","377,378,103",,33.815238,132.739449,2023/05/10 13:40:21,@saiseki56,eNB-LCID変更,https://x.com/saiseki56/status/1656209906347954178,@seaki @saiseki56,green,signal
 ae06a7b9,【5G】八幡浜市舌間,八幡浜市,コン柱,open,3,3,3,"737473-7,8,9","189,280,191",,33.444135,132.417742,2023/01/08 14:48:19,@saiseki56,eNB-LCID変更,https://x.com/saiseki56/status/1610155180456292352,@kmtt2012 @saiseki56,darkblue,upload
 ae491c57,今治市旭町二丁目,今治市,屋上,open,3,,,"737359-7,8,9","282,283,284",,34.06170444,132.9998046,2022/06/01 00:00:00,@imabarizine,,,@imabarizine,green,signal
@@ -708,7 +708,7 @@ d17a9735,新居浜市大生院②,新居浜市,コン柱,open,2,,,"737587-5,6","
 d18732e8,宇和島市寄松,宇和島市,コン柱,open,2,,,"737429-6,7","39,237",,33.195709,132.537451,2022/11/12 19:43:02,@sfuruie0407,,https://x.com/sfuruie0407/status/1591046594300108800,@kmtt2012 @sfuruie0407,green,signal
 d1e5e3da,西条市荒川,西条市,コン柱,open,1,,,737517-4,140,CBSB838001239,33.865261,133.184441,2023/05/31 23:40:34,@sfuruie0407,新規発見,https://x.com/sfuruie0407/status/1663887274478809094,@sfuruie0407,green,signal
 d1fd1a92,西条市円海寺,西条市,コン柱,open,3,,,"737548-7,8,9","64,186,200",,33.933806,133.073914,2023/05/01 21:18:44,@MVp7WugssM0KObp,,https://x.com/MVp7WugssM0KObp/status/1652988930617380865,@hals111 @MVp7WugssM0KObp,green,signal
-d279fdc3,四国中央市豊岡町大町,四国中央市,コン柱,open,3,,,"737588-5,6,7","216,185,131",,33.961371,133.485316,2024/08/16 21:21:05,@imabarizine,eNB-LCID変更,,@imabarizine,green,signal
+d279fdc3,四国中央市豊岡町大町,四国中央市,コン柱,open,3,,,"737588-5,6,7","216,185,131",,33.961371,133.485316,2024/08/16 21:21:05,@imabarizine,eNB-LCID変更,https://x.com/raku10ehime/status/1824427392594743300,@imabarizine,green,signal
 d2c7661f,【5G】大洲市肱川町山鳥坂,大洲市,コン柱,open,2,2,1,"737447-4,5","195,196",,33.456563,132.685509,2024/06/08 19:49:41,@saiseki56,5G追加,https://x.com/saiseki56/status/1799306020382261457,@saiseki56,darkblue,upload
 d35c49c3,南宇和郡愛南町御荘平城④,愛南町,コン柱,ready,2,,,,,,32.953917,132.556222,2024/05/11 22:44:44,@saiseki56,新規発見,https://x.com/saiseki56/status/1789275262158573781,@saiseki56,orange,wrench
 d37ebf47,東温市牛渕,東温市,屋上,open,3,,,"737427-6,7,8","41,40,39",,33.797706,132.84682,2022/08/16 23:28:26,@MVp7WugssM0KObp,,https://x.com/MVp7WugssM0KObp/status/1559133492336001024,@MVp7WugssM0KObp,green,signal
@@ -805,7 +805,7 @@ ebfa23a6,新居浜市郷二丁目,新居浜市,コン柱,open,3,,,"737554-1,2,3"
 ec1db5ac,四国中央市土居町上野①,四国中央市,コン柱,open,3,,,"737509-2,3,4","3,307,5",,33.947098,133.390963,2023/04/16 11:16:39,@kmtt2012,eNB-LCID変更,https://x.com/kmtt2012/status/1647344592554164227,匿名 @imabarizine @kmtt2012,green,signal
 ec50d548,西条市河之内,西条市,コン柱,open,2,,,"737547-4,5","378,50",,33.936371,133.031163,2023/05/04 11:29:19,@imabarizine,eNB-LCID変更,https://x.com/raku10ehime/status/1654086116113514496,@imabarizine,green,signal
 ec5e4ad2,喜多郡内子町大瀬中央,内子町,コン柱,open,3,,,"737576-2,3,4","161,160,159",,33.574559,132.71359,2023/04/20 16:00:20,@sfuruie0407,,https://x.com/sfuruie0407/status/1648970344886333444,@sfuruie0407 @saiseki56,green,signal
-ecaf38db,【5G】四国中央市川滝町領家,四国中央市,コン柱,open,3,1,1,"737614-7,8,9","10,11,12",CBSB83801233,33.98713308,133.6330053,2024/08/16 21:27:05,@imabarizine,開局,,@saiseki56 @imabarizine,darkblue,upload
+ecaf38db,【5G】四国中央市川滝町領家,四国中央市,コン柱,open,3,1,1,"737614-7,8,9","10,11,12",CBSB83801233,33.98713308,133.6330053,2024/08/16 21:27:05,@imabarizine,開局,https://x.com/raku10ehime/status/1824427995395989732,@saiseki56 @imabarizine,darkblue,upload
 ecfa708c,西宇和郡伊方町正野,伊方町,コン柱,open,2,,,"737439-7,8","74,72",,33.3616,132.048193,2022/11/12 19:54:38,@saiseki56,,https://x.com/saiseki56/status/1591282654699454466,wankosa @saiseki56,green,signal
 ed7c3e81,伊予市下三谷②,伊予市,コン柱,open,3,,,"737483-7,8,9","26,132,133",,33.764981,132.725065,2023/03/21 17:38:48,@saiseki56,eNB-LCID変更,https://x.com/saiseki56/status/1637813745400582145,@imabarizine @seaki @saiseki56,green,signal
 ee76fd78,【5G】新居浜市東雲町二丁目,新居浜市,コン柱,open,3,2,,"737543-1,2,3","349,60,20",,33.965312,133.300605,2024/05/25 21:43:11,@imabarizine,5G追加,https://x.com/raku10ehime/status/1794377245580235077,Googleフォーム208 @sakura3ripa @kmtt2012 @imabarizine,darkblue,upload
