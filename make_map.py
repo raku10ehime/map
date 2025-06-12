@@ -60,16 +60,17 @@ folium.raster_layers.TileLayer(
     overlay=False,
 ).add_to(map)
 
-folium.raster_layers.TileLayer(
-    name="楽天モバイルエリア",
-    tiles="https://area-map.mobile.rakuten.co.jp/5gs/geoserver/5g/mno_coverage_map/gwc/service/gmaps?LAYERS=mno_coverage_map:all_map&FORMAT=image/png&TRANSPARENT=TRUE&x={x}&y={y}&zoom={z}&update=20231130",
+folium.raster_layers.WmsTileLayer(
+    url="https://area-map.rmb-ss.jp/turbo",
+    layers="turbo",
+    name="楽天モバイル",
     fmt="image/png",
-    attr="楽天モバイルエリア",
-    tms=False,
+    transparent=True,
     overlay=True,
     control=True,
-    opacity=1,
+    opacity=1.0,
     show=False,
+    attr="<a href='https://network.mobile.rakuten.co.jp/'>楽天モバイル</a>",
 ).add_to(map)
 
 fg0 = folium.FeatureGroup(name="パートナーエリア", show=False).add_to(map)
