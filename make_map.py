@@ -86,7 +86,7 @@ fg4 = folium.FeatureGroup(
 
 options = {
     "vectorTileLayerStyles": {
-        "rakuten": {
+        "next_rakuten": {
             "fill": True,
             "weight": 0,
             "fillColor": "orange",
