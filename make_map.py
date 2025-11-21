@@ -103,7 +103,7 @@ fg0.add_child(vc)
 
 for i, r in df.iterrows():
     enb_lcid = r["eNB-LCID"] or "737XXX-X,X,X"
-    pci = r["PCI"] or "XX,XX,XX"
+    enb_lcid_700 = r["eNB-LCID"] or "737XXX-X,X,X"
 
     tag_map = f'<p><a href="https://www.google.com/maps?layer=c&cbll={r["緯度"]},{r["経度"]}" target="_blank" rel="noopener noreferrer">{r["場所"]}</a></p>'
 
@@ -111,7 +111,7 @@ for i, r in df.iterrows():
         [
             f"【日付】\r{dt_str}",
             f"【場所】\r{r['場所']}\r({r['緯度']}, {r['経度']})",
-            f'【基地局】\r・eNB-LCID: {enb_lcid}\r・PCI: {pci}\r・基地局ID: {r["基地局ID"]}',
+            f'【基地局】\r・eNB-LCID: {enb_lcid}\r・eNB-LCID_700: {enb_lcid_700}\r・基地局ID: {r["基地局ID"]}',
             f'【地図】\rhttps://www.google.co.jp/maps?q={r["緯度"]},{r["経度"]}',
             "#愛媛 #楽天モバイル #基地局",
         ]
