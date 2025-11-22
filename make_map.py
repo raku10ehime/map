@@ -103,7 +103,7 @@ fg0.add_child(vc)
 
 for i, r in df.iterrows():
     enb_lcid = r["eNB-LCID"] or "737XXX-X,X,X"
-    enb_lcid_700 = r["eNB-LCID"] or "737XXX-X,X,X"
+    enb_lcid_700 = r["eNB-LCID_700"] or "737XXX-X,X,X"
 
     tag_map = f'<p><a href="https://www.google.com/maps?layer=c&cbll={r["緯度"]},{r["経度"]}" target="_blank" rel="noopener noreferrer">{r["場所"]}</a></p>'
 
