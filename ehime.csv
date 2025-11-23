@@ -442,7 +442,7 @@
 7509583a,【5G】西予市宇和町卯之町四丁目,西予市,コン柱,open,3,1,3,"737525-4,5,6",,,33.360469,132.514259,2023/03/24 22:10:49,@saiseki56,eNB-LCID変更,https://x.com/saiseki56/status/1639225260078923777,@kmtt2012 @saiseki56,darkblue,upload
 7541863e,西条市丹原町高松,西条市,コン柱,open,3,,,"737588-2,3,4",,CBSB838001427,33.89240458,133.0491258,2024/05/04 21:28:02,@imabarizine,新規開局,https://x.com/raku10ehime/status/1786774759759610338,@imabarizine,green,signal
 75764549,【衛星】八幡浜市日土町④,八幡浜市,衛星,open,1,,,742195-1,,CBSB838001342,33.515889,132.460083,2024/04/28 20:45:02,@saiseki56,新規開局,https://x.com/saiseki56/status/1783408881290694814,@saiseki56,green,globe
-75d0a07f,今治市中寺R003,今治市,コン柱,open,3,,,"741276-1,2,3",,CBSB948398517,34.032015,132.998361,2025/11/21 23:35:59,@imabarizine,開局,,@imabarizine,green,signal
+75d0a07f,今治市中寺R003,今治市,コン柱,open,3,,,"741276-1,2,3",,CBSB948398517,34.032015,132.998361,2025/11/21 23:35:59,@imabarizine,開局,https://x.com/raku10ehime/status/1991879501735968839,@imabarizine,green,signal
 761cf705,今治市片山二丁目,今治市,コン柱,open,3,,,"737363-10,11,12",,,34.05291891,132.9816801,2022/06/01 00:00:00,@imabarizine,,,@imabarizine,green,signal
 762290d9,松山市高山町,松山市,コン柱,open,3,,,"737283-10,11,12",,,33.86848607,132.7239586,2022/06/01 00:00:00,wankosa,,,wankosa,green,signal
 76268a4f,伊予郡砥部町大南,砥部町,コン柱,open,3,,,"737556-1,2,3",,,33.733474,132.789853,2023/03/03 20:38:00,@sfuruie0407,eNB-LCID変更,https://x.com/sfuruie0407/status/1631479728988381184,@sfuruie0407,green,signal
@@ -793,7 +793,7 @@ db9cc10d,【5G】松山市白水台六丁目,松山市,コン柱,open,3,1,2,"737
 dbe2be1d,【衛星】西条市丹原町楠窪②,西条市,衛星,open,1,,,742262-1,,CBSB838001605,33.83261,133.049156,2023/03/21 17:56:58,@sfuruie0407,,https://x.com/sfuruie0407/status/1637742541725655040,@sfuruie0407,green,globe
 dc2d78fe,【衛星】西条市丹原町楠窪辛,西条市,衛星,ready,1,,,,,,33.835633,133.063651,2024/06/16 08:41:21,@sfuruie0407,現地確認,https://x.com/sfuruie0407/status/1801894307802321163,@saiseki56 @sfuruie0407,orange,globe
 dc47fc5f,今治市桜井四丁目,今治市,コン柱,open,3,,,"737512-10,11,12",,,34.017394,133.041464,2024/05/04 21:11:41,@imabarizine,eNB-LCID変更,https://x.com/raku10ehime/status/1650076119549497344,@seaki @imabarizine,green,signal
-dc510f90,今治市高橋②,今治市,コン柱,open,3,,,"737611-7,8,9",,CBSB838001651,34.03871,132.969485,2024/07/18 21:03:24,@imabarizine,開局,https://x.com/raku10ehime/status/1813908452839969069,@imabarizine,green,signal
+dc510f90,【5G】今治市高橋②,今治市,コン柱,open,3,3,1,"737611-7,8,9",,CBSB838001651,34.03871,132.969485,2025/11/23 08:55:00,@imabarizine,5G追加,https://x.com/raku10ehime/status/1992389883315581289,@imabarizine,darkblue,upload
 dc69fd86,今治市波方町養老,今治市,コン柱,open,3,,,"737488-1,2,3",,,34.107011,132.945954,2023/04/22 13:35:00,@imabarizine,eNB-LCID変更,https://x.com/raku10ehime/status/1649634939825197056,@imabarizine,green,signal
 dcd9ba62,【衛星】東温市山之内①,東温市,衛星,open,1,,,742213-1,,,33.86515386,132.921991,2022/06/01 00:00:00,wankosa @MVp7WugssM0KObp,,,wankosa @MVp7WugssM0KObp,green,globe
 dd095cf8,松山市市坪北二丁目,松山市,コン柱,open,3,,,"737293-4,5,6",,,33.8134448,132.752258,2022/06/01 00:00:00,wankosa,,,wankosa,green,signal
@@ -913,7 +913,7 @@ f8847a25,松山市東方町,松山市,コン柱,open,3,,,"737292-4,5,6",,,33.771
 f8b49700,松山市北梅本町④,松山市,コン柱,open,1,,,737461-9,,CBSB838001230,33.829249,132.851598,2023/07/06 20:58:17,@saiseki56,新規開局,,@saiseki56,green,signal
 f8b716c5,西条市河原津,西条市,コン柱,open,2,,,"737547-9,10",,,33.968964,133.066656,2023/05/27 13:15:13,@imabarizine,eNB-LCID変更,https://x.com/raku10ehime/status/1662328998171668481,@boyaboya01 @imabarizine,green,signal
 f8c54a65,松山市萩原①,松山市,コン柱,open,3,,,"737610-5,6,7",,,33.993927,132.827316,2024/06/02 19:46:27,@imabarizine,開局,https://x.com/raku10ehime/status/1797223093670461534,@imabarizine,green,signal
-f8f5d9cf,今治市大西町脇,今治市,コン柱,open,3,,,"737403-7,8,9",,,34.060604,132.921808,2024/05/05 23:03:49,@imabarizine,写真追加,https://x.com/raku10ehime/status/1787132854092304758,@imabarizine,green,signal
+f8f5d9cf,今治市大西町脇,今治市,コン柱,open,3,,,"737426-1,2,3",,,34.060604,132.921808,2025/11/23 08:48:54,@imabarizine,eNB-LCID変更,https://x.com/raku10ehime/status/1992380630458585273,@imabarizine,green,signal
 f9a8619b,今治市大西町別府,今治市,コン柱,open,1,,,737391-10,,CBSB838001058,34.057976,132.898669,2024/05/05 23:09:27,@imabarizine,写真追加,https://x.com/raku10ehime/status/1787133829574226091,@imabarizine,green,signal
 f9b24742,今治市波方町樋口②,今治市,コン柱,open,3,,,"737486-7,8,9",,,34.094078,132.943822,2023/04/22 13:53:32,@imabarizine,eNB-LCID変更,https://x.com/raku10ehime/status/1649639213950980096,@imabarizine,green,signal
 f9d47de0,松山市北梅本町②,松山市,コン柱,open,3,,,"737391-4,5,6",,,33.8053752,132.8432565,2022/06/01 00:00:00,@seaki,,,@seaki,green,signal
