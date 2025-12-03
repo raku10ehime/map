@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSV Map Visualization</title>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Leaflet CSS & JS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+        integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+        integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+
+    <!-- PapaParse -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
+
+    <style>
+        #map {
+            height: 100%;
+            width: 100%;
+        }
+
+        /* マーカー用カスタムスタイル */
+        .ta-marker {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            color: white;
+            font-weight: bold;
+            font-size: 10px;
+            border: 1px solid white;
+            box-shadow: 0 0 4px rgba(0, 0, 0, 0.5);
+        }
+    </style>
+</head>
+
+<body class="h-screen flex flex-col bg-gray-100 text-gray-800">
+
+    <!-- Header -->
+    <header class="bg-blue-600 text-white p-4 shadow-md z-20 flex justify-between items-center">
+        <h1 class="text-xl font-bold">CSV Map Visualization</h1>
+        <button id="menuBtn" class="md:hidden text-white focus:outline-none">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+            </svg>
+        </button>
+    </header>
+
+    <div class="flex flex-1 overflow-hidden relative">
+        <!-- Sidebar / Control Panel -->
+        <!-- 
+          スマホ: fixed, z-50, w-64, 画面左端(inset-y-0 left-0), 初期状態は隠す(-translate-x-full)
+          PC: relative, z-auto, w-80, 常に表示(translate-x-0), 位置指定解除(inset-auto)
+        -->
+        <aside id="sidebar"
+            class="fixed inset-y-0 left-0 z-[3000] w-64 bg-white shadow-2xl transform -translate-x-full transition-transform duration-300 ease-in-out overflow-y-auto md:relative md:translate-x-0 md:w-80 md:inset-auto md:z-auto md:shadow-lg flex flex-col">
+
+            <!-- Close Button for Mobile -->
+            <div class="md:hidden flex justify-between items-center p-4 border-b bg-gray-50">
+                <span class="font-bold text-gray-700">メニュー</span>
+                <button id="closeSidebarBtn"
+                    class="text-gray-500 hover:text-gray-700 p-2 rounded-full hover:bg-gray-200 focus:outline-none">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12">
+                        </path>
+                    </svg>
+                </button>
+            </div>
+
+            <div class="p-4 flex flex-col gap-6">
+                <!-- File Input -->
+                <div class="border-b pb-4">
+                    <h2 class="font-semibold mb-3 text-gray-700 text-lg">1. CSVファイル読み込み</h2>
+                    <input type="file" id="csvInput" accept=".csv" multiple class="block w-full text-sm text-gray-500
+                      file:mr-4 file:py-3 file:px-6
+                      file:rounded-full file:border-0
+                      file:text-sm file:font-semibold
+                      file:bg-blue-50 file:text-blue-700
+                      hover:file:bg-blue-100
+                      cursor-pointer
+                    " />
+                    <p class="text-xs text-gray-500 mt-2">※最大3ファイルまで選択可能</p>
+                </div>
+
+                <!-- Circle Settings -->
+                <div class="border-b pb-4">
+                    <h2 class="font-semibold mb-3 text-gray-700 text-lg">2. 円描画設定</h2>
+                    <div class="mb-4">
+                        <label for="taOffset" class="block text-sm font-medium text-gray-700 mb-2">TA オフセット</label>
+                        <input type="number" id="taOffset" value="0"
+                            class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-base">
+                        <p class="text-xs text-gray-500 mt-1">半径 = (TA - オフセット) × 倍率</p>
+                    </div>
+                    <div>
+                        <label for="radiusMultiplier" class="block text-sm font-medium text-gray-700 mb-2">倍率 (標準:
+                            156)</label>
+                        <div class="flex items-center gap-3">
+                            <input type="range" id="radiusMultiplier" min="1" max="300" value="156"
+                                class="w-full h-4 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-blue-600">
+                            <span id="multiplierValue" class="text-base font-medium w-8 text-center">156</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Filtering -->
+                <div class="flex-1">
+                    <div class="flex justify-between items-center mb-3">
+                        <h2 class="font-semibold text-gray-700 text-lg">3. フィルタリング</h2>
+                        <button id="clearFilterBtn" class="text-xs text-red-600 hover:text-red-800 underline">
+                            選択クリア
+                        </button>
+                    </div>
+                    <p class="text-xs text-gray-500 mb-2">eNB-LCID (件数) - 最大3つまで</p>
+                    <div id="filterContainer"
+                        class="space-y-2 max-h-60 overflow-y-auto border border-gray-300 p-3 rounded-lg bg-gray-50">
+                        <p class="text-sm text-gray-400 italic">CSVを読み込んでください</p>
+                    </div>
+                    <button id="applyFilterBtn"
+                        class="mt-4 w-full bg-blue-600 text-white py-3 px-4 rounded-lg font-semibold hover:bg-blue-700 disabled:bg-gray-400 disabled:cursor-not-allowed shadow-sm active:scale-95 transition-transform"
+                        disabled>
+                        適用して表示
+                    </button>
+                </div>
+            </div>
+
+        </aside>
+
+        <!-- Mobile Overlay -->
+        <div id="mobileOverlay"
+            class="fixed inset-0 bg-black opacity-50 z-[2999] hidden md:hidden transition-opacity duration-300"></div>
+
+        <!-- Map Container -->
+        <main class="flex-1 relative w-full h-full">
+            <div id="map"></div>
+        </main>
+    </div>
+
+    <script>
+        // --- Global Variables ---
+        let map;
+        let rawData = [];
+        let markersLayer = L.layerGroup();
+        let circlesLayer = L.layerGroup();
+        let uniqueEnbLcids = [];
+
+        // --- Initialization ---
+        document.addEventListener('DOMContentLoaded', () => {
+            initMap();
+            setupEventListeners();
+            setupMobileMenu();
+        });
+
+        function initMap() {
+            // 国土地理院地図 (標準地図)
+            const gsiTileUrl = 'https://cyberjapandata.gsi.go.jp/xyz/std/{z}/{x}/{y}.png';
+            const gsiAttribution = "<a href='https://maps.gsi.go.jp/development/ichiran.html' target='_blank'>国土地理院</a>";
+
+            map = L.map('map').setView([35.6895, 139.6917], 5); // 初期表示は東京あたり、ズーム5
+
+            L.tileLayer(gsiTileUrl, {
+                attribution: gsiAttribution,
+                maxZoom: 18
+            }).addTo(map);
+
+            markersLayer.addTo(map);
+            circlesLayer.addTo(map);
+        }
+
+        function setupEventListeners() {
+            // CSV Input
+            document.getElementById('csvInput').addEventListener('change', handleFileSelect);
+
+            // Settings Inputs
+            document.getElementById('radiusMultiplier').addEventListener('input', (e) => {
+                document.getElementById('multiplierValue').textContent = e.target.value;
+                updateVisuals(); // リアルタイム更新
+            });
+            document.getElementById('taOffset').addEventListener('input', updateVisuals);
+
+            // Filter Button
+            document.getElementById('applyFilterBtn').addEventListener('click', () => {
+                updateVisuals();
+                // モバイルの場合は適用後にサイドバーを閉じる
+                if (window.innerWidth < 768) {
+                    toggleSidebar(false);
+                }
+            });
+
+            // Clear Filter Button
+            document.getElementById('clearFilterBtn').addEventListener('click', () => {
+                const checkboxes = document.querySelectorAll('#filterContainer input[type="checkbox"]');
+                checkboxes.forEach(cb => cb.checked = false);
+            });
+        }
+
+        function setupMobileMenu() {
+            const sidebar = document.getElementById('sidebar');
+            const menuBtn = document.getElementById('menuBtn');
+            const closeBtn = document.getElementById('closeSidebarBtn');
+            const overlay = document.getElementById('mobileOverlay');
+
+            function toggleSidebar(show) {
+                if (show) {
+                    sidebar.classList.remove('-translate-x-full');
+                    overlay.classList.remove('hidden');
+                } else {
+                    sidebar.classList.add('-translate-x-full');
+                    overlay.classList.add('hidden');
+                }
+            }
+
+            // グローバルスコープに関数を公開（他の場所から呼べるように）
+            window.toggleSidebar = toggleSidebar;
+
+            menuBtn.addEventListener('click', () => toggleSidebar(true));
+            closeBtn.addEventListener('click', () => toggleSidebar(false));
+            overlay.addEventListener('click', () => toggleSidebar(false));
+        }
+
+        // --- CSV Processing ---
+        function handleFileSelect(event) {
+            const files = event.target.files;
+            if (!files || files.length === 0) return;
+
+            if (files.length > 3) {
+                alert("選択できるファイルは最大3つまでです。");
+                event.target.value = ""; // 選択解除
+                return;
+            }
+
+            rawData = []; // リセット
+            let loadedCount = 0;
+            const totalFiles = files.length;
+
+            // 複数ファイルを読み込んで結合
+            Array.from(files).forEach(file => {
+                Papa.parse(file, {
+                    header: true,
+                    dynamicTyping: true,
+                    skipEmptyLines: true,
+                    complete: function (results) {
+                        // 結合
+                        rawData = rawData.concat(results.data);
+                        loadedCount++;
+
+                        if (loadedCount === totalFiles) {
+                            processData(rawData);
+                        }
+                    },
+                    error: function (error) {
+                        alert(`ファイル ${file.name} の読み込みエラー: ` + error.message);
+                        loadedCount++; // エラーでもカウントを進める
+                        if (loadedCount === totalFiles && rawData.length > 0) {
+                            processData(rawData);
+                        }
+                    }
+                });
+            });
+        }
+
+        function processData(data) {
+            // lat, lon があるデータのみフィルタリング
+            // 結合後のデータに対して処理を行う
+            const validData = data.filter(row => row.lat && row.lon);
+            rawData = validData; // 更新
+
+            // eNB-LCID 生成と集計
+            const enbLcidMap = new Map(); // key: enb_lcid, value: { count: 0, sortKey: 0 }
+
+            rawData.forEach(row => {
+                if (row.short_cell_id !== undefined && row.rnc !== undefined) {
+                    row.enb_lcid = `${row.short_cell_id}-${row.rnc}`;
+
+                    if (!enbLcidMap.has(row.enb_lcid)) {
+                        // cell_id があればそれをソートキーに、なければ short_cell_id * 256 + rnc で代用（または単に short_cell_id）
+                        // ここでは cell_id カラムが存在することを期待して使用
+                        let sortKey = row.cell_id;
+                        if (sortKey === undefined) {
+                            // cell_idがない場合のフォールバック
+                            sortKey = (row.short_cell_id * 256) + row.rnc;
+                        }
+                        enbLcidMap.set(row.enb_lcid, { count: 0, sortKey: sortKey });
+                    }
+                    enbLcidMap.get(row.enb_lcid).count++;
+                } else {
+                    row.enb_lcid = "unknown";
+                }
+            });
+
+            // マップから配列に変換してソート
+            uniqueEnbLcids = Array.from(enbLcidMap.entries()).map(([id, data]) => ({
+                id: id,
+                count: data.count,
+                sortKey: data.sortKey
+            }));
+
+            // sortKey (cell_id) で昇順ソート
+            uniqueEnbLcids.sort((a, b) => a.sortKey - b.sortKey);
+
+            renderFilterUI();
+
+            document.getElementById('applyFilterBtn').disabled = false;
+            alert(`${rawData.length} 件のデータを読み込みました（${uniqueEnbLcids.length} ユニークID）。フィルタを選択して表示してください。`);
+        }
+
+        // --- UI Rendering ---
+        function renderFilterUI() {
+            const container = document.getElementById('filterContainer');
+            container.innerHTML = '';
+
+            uniqueEnbLcids.forEach(item => {
+                const div = document.createElement('div');
+                div.className = 'flex items-center';
+
+                const checkbox = document.createElement('input');
+                checkbox.type = 'checkbox';
+                checkbox.value = item.id;
+                checkbox.className = 'mr-2 h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded';
+
+                // 3つ制限のロジック
+                checkbox.addEventListener('change', function () {
+                    const checkedCount = container.querySelectorAll('input[type="checkbox"]:checked').length;
+                    if (checkedCount > 3) {
+                        this.checked = false;
+                        alert("選択できるのは3つまでです。");
+                    }
+                });
+
+                const label = document.createElement('label');
+                label.textContent = `${item.id} (${item.count})`;
+                label.className = 'text-sm text-gray-700';
+
+                div.appendChild(checkbox);
+                div.appendChild(label);
+                container.appendChild(div);
+            });
+        }
+
+        // --- Visualization ---
+        function updateVisuals() {
+            // Clear existing layers
+            markersLayer.clearLayers();
+            circlesLayer.clearLayers();
+
+            // Get Settings
+            const offset = parseFloat(document.getElementById('taOffset').value) || 0;
+            const multiplier = parseFloat(document.getElementById('radiusMultiplier').value) || 156;
+
+            // Get Selected Filters
+            const checkboxes = document.querySelectorAll('#filterContainer input[type="checkbox"]:checked');
+            const selectedIds = Array.from(checkboxes).map(cb => cb.value);
+
+            if (selectedIds.length === 0) return;
+
+            // Filter Data
+            const filteredData = rawData.filter(row => selectedIds.includes(row.enb_lcid));
+
+            // RNCごとの色管理 (赤、緑、青の繰り返し)
+            const colors = ['red', 'green', 'blue'];
+
+            const bounds = L.latLngBounds();
+
+            filteredData.forEach(row => {
+                const lat = row.lat;
+                const lon = row.lon;
+                const rnc = row.rnc || 0;
+                const ta = row.ta || 0;
+
+                // Color Logic
+                // RNCが1始まりと仮定。
+                let colorIndex = (rnc > 0 ? rnc - 1 : 0) % colors.length;
+                let color = colors[colorIndex];
+
+                // Marker (DivIcon with TA value)
+                const icon = L.divIcon({
+                    className: '', // デフォルトクラスを無効化して自前で設定
+                    html: `<div class="ta-marker" style="background-color: ${color}; width: 24px; height: 24px;">${ta}</div>`,
+                    iconSize: [24, 24],
+                    iconAnchor: [12, 12]
+                });
+
+                const marker = L.marker([lat, lon], { icon: icon });
+
+                // Popup: eNB-LCID, psc, ta, rsrq
+                // 行間を詰めるために leading-tight や m-0 を使用
+                const popupContent = `
+                    <div class="font-sans text-sm leading-tight">
+                        <p class="m-0"><strong>eNB-LCID:</strong> ${row.enb_lcid}</p>
+                        <p class="m-0"><strong>PSC:</strong> ${row.psc}</p>
+                        <p class="m-0"><strong>TA:</strong> ${ta}</p>
+                        <p class="m-0"><strong>RSRP:</strong> ${row.rsrp}</p>
+                    </div>
+                `;
+                marker.bindPopup(popupContent);
+                markersLayer.addLayer(marker);
+
+                // Circle
+                // 半径 = (ta - オフセット) * 倍率
+                let radius = (ta - offset) * multiplier;
+                if (radius > 0) {
+                    const circle = L.circle([lat, lon], {
+                        color: color,
+                        fillColor: color,
+                        fillOpacity: 0.1,
+                        weight: 1,
+                        radius: radius
+                    });
+                    circlesLayer.addLayer(circle);
+                }
+
+                bounds.extend([lat, lon]);
+            });
+
+            // Fit map to bounds
+            if (filteredData.length > 0) {
+                map.fitBounds(bounds);
+            }
+        }
+
+    </script>
+</body>
+
+</html>
