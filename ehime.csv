@@ -380,7 +380,7 @@
 6840568b,伊予市双海町高岸,伊予市,コン柱,open,2,,,"737601-7,8",,,33.682436,132.632981,2025/03/30 00:06:28,@saiseki56,eNB-LCID変更,https://x.com/saiseki56/status/1905501312525238739,@saiseki56,green,signal
 68786a74,【衛星】喜多郡内子町臼杵④,内子町,衛星,open,1,,,742238-1,,CBSB838001559,33.622472,132.846583,2024/05/21 20:28:30,@saiseki56,新規開局,https://x.com/saiseki56/status/1792776093608624578,@saiseki56,green,globe
 6896f473,大洲市東大洲②,大洲市,コン柱,open,3,,,"737544-6,7,8",,,33.522499,132.578933,2023/03/17 22:29:57,@saiseki56,eNB-LCID変更,https://x.com/saiseki56/status/1635875501008097281,@saiseki56,green,signal
-68d69589,松山市才之原R001,松山市,コン柱,open,1,,,741271-1,,CBSB838000988,33.9726295,132.8248197,2026/05/06 23:03:27,@imabarizine,新規開局,,@imabarizine,green,signal
+68d69589,松山市才之原R001,松山市,コン柱,open,1,,,741271-1,,CBSB838000988,33.9726295,132.8248197,2026/05/06 23:03:27,@imabarizine,新規開局,https://x.com/raku10ehime/status/2052030129711521989,@imabarizine,green,signal
 6920549c,宇和島市妙典寺前,宇和島市,コン柱,open,3,,,"737296-7,8,9",,,33.21171,132.56495,2022/06/01 00:00:00,@kmtt2012,,,@kmtt2012,green,signal
 693b07ce,宇和島市吉田町白浦①,宇和島市,コン柱,open,3,,,"737589-4,5,6",,,33.309818,132.528735,2024/04/28 14:02:39,@saiseki56,開局,https://x.com/saiseki56/status/1721039836621205544,@saiseki56,green,signal
 6945e3ce,新居浜市新田町R001,新居浜市,コン柱,open,3,,,"737474-9,10,11",,CBSB948417051,33.95810554,133.2645709,2026/05/05 21:59:25,@imabarizine,新規開局,https://x.com/raku10ehime/status/2051655295039099170,@imabarizine,green,signal
@@ -686,7 +686,7 @@ bc80c324,伊予郡砥部町高尾田①,砥部町,コン柱,open,3,,,"737556-8,9
 bcc88aae,東温市北方,東温市,コン柱,open,3,,,"737504-7,8,9",,,33.802725,132.894816,2023/03/21 18:33:14,@kmtt2012,eNB-LCID変更,https://x.com/kmtt2012/status/1637422534605045760,@imabarizine wankosa @kmtt2012,green,signal
 bd41e416,伊予郡砥部町七折,砥部町,コン柱,open,1,,,737554-4,,,33.746423,132.759745,2023/03/03 20:31:25,@sfuruie0407,,https://x.com/sfuruie0407/status/1631221811479478273,@sfuruie0407,green,signal
 bdbab2e0,西条市小松町明穂,西条市,コン柱,open,3,,,"737601-2,3,4",,,33.876541,133.064538,2024/12/08 20:29:40,@imabarizine,eNB-LCID変更,https://x.com/raku10ehime/status/1865727951117095078,@hals111 @kmtt2012 @imabarizine,green,signal
-bdf5f606,松山市鹿峰R001,松山市,コン柱,ready,3,,,,,CBSB838001650,33.93767308,132.7734715,2026/05/06 23:11:33,@imabarizine,未開局,,@imabarizine,orange,wrench
+bdf5f606,松山市鹿峰R001,松山市,コン柱,ready,3,,,,,CBSB838001650,33.93767308,132.7734715,2026/05/06 23:11:33,@imabarizine,未開局,https://x.com/raku10ehime/status/2052030442027778088,@imabarizine,orange,wrench
 bdfa8890,西予市三瓶町朝立①,西予市,コン柱,open,3,,,"737502-9,10,11",,,33.38345,132.42446,2023/03/24 22:03:35,@saiseki56,eNB-LCID変更,https://x.com/saiseki56/status/1639214341466755072,@kmtt2012 @saiseki56,green,signal
 beb277fa,喜多郡内子町立石,内子町,コン柱,open,1,,,737568-2,,,33.565628,132.759817,2023/04/20 16:08:55,@saiseki56,新規開局,https://x.com/saiseki56/status/1648948006606237703,@saiseki56,green,signal
 beb9526a,【ピコセル】上浮穴郡久万高原町菅生,久万高原町,ピコセル,open,1,,,752280-5,,,33.660482,132.904052,2023/04/27 19:19:48,@sfuruie0407,,https://x.com/sfuruie0407/status/1651529799515660288,@sfuruie0407,green,folder-close
