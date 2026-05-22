@@ -56,7 +56,7 @@ folium.raster_layers.TileLayer(
     "https://cyberjapandata.gsi.go.jp/xyz/hillshademap/{z}/{x}/{y}.png",
     name="国土地理院（陰影起伏図）",
     attr="&copy; 国土地理院",
-    overlay=True,
+    overlay=False,
     zIndex=3,
 ).add_to(map)
 
