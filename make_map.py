@@ -14,7 +14,6 @@ dt_str = dt_now.strftime("%Y/%m/%d")
 p = pathlib.Path("map", "ehime.csv")
 
 df = pd.read_csv(p, dtype=str).fillna("")
-
 df["緯度"] = df["緯度"].astype(float)
 df["経度"] = df["経度"].astype(float)
 
@@ -24,42 +23,54 @@ df["URL"] = df["URL"].apply(
     else url
 )
 
-df
-
+# -------------------------
+# Map 本体
+# -------------------------
 map = folium.Map(
     tiles=None,
     location=[33.84167, 132.76611],
     zoom_start=12,
 )
 
+# -------------------------
+# 背景タイル（zIndex 低）
+# -------------------------
 folium.raster_layers.TileLayer(
     "https://{s}.google.com/vt/lyrs=s,h&x={x}&y={y}&z={z}",
     subdomains=["mt0", "mt1", "mt2", "mt3"],
     name="Google Map(航空写真)",
-    attr="<a href='https://developers.google.com/maps/documentation'>© Google</a>",
-    opacity=0.8,
+    attr="© Google",
+    overlay=False,
+    zIndex=2,
 ).add_to(map)
 
 folium.raster_layers.TileLayer(
     tiles="https://cyberjapandata.gsi.go.jp/xyz/blank/{z}/{x}/{y}.png",
     name="国土地理院（白地図）",
-    attr='&copy; <a href="https://maps.gsi.go.jp/development/ichiran.html">国土地理院</a>',
+    attr='&copy; 国土地理院',
+    overlay=False,
+    zIndex=1,
 ).add_to(map)
 
 folium.raster_layers.TileLayer(
     "https://cyberjapandata.gsi.go.jp/xyz/hillshademap/{z}/{x}/{y}.png",
     name="国土地理院（陰影起伏図）",
-    attr="<a href='https://maps.gsi.go.jp/development/ichiran.html'>国土地理院</a>",
-    opacity=0.6,
+    attr="&copy; 国土地理院",
+    overlay=True,
+    zIndex=3,
 ).add_to(map)
 
 folium.raster_layers.TileLayer(
     tiles="https://cyberjapandata.gsi.go.jp/xyz/pale/{z}/{x}/{y}.png",
-    name="国土地理院",
-    attr='&copy; <a href="https://maps.gsi.go.jp/development/ichiran.html">国土地理院</a>',
+    name="国土地理院（淡色）",
+    attr='&copy; 国土地理院',
     overlay=False,
+    zIndex=1,
 ).add_to(map)
 
+# -------------------------
+# WMS（透明レイヤー・高 zIndex）
+# -------------------------
 folium.raster_layers.WmsTileLayer(
     url="https://area-map.rmb-ss.jp/turbo",
     layers="turbo",
@@ -70,20 +81,22 @@ folium.raster_layers.WmsTileLayer(
     control=True,
     opacity=1.0,
     show=False,
-    attr="<a href='https://network.mobile.rakuten.co.jp/'>楽天モバイル</a>",
+    attr="楽天モバイル",
+    zIndex=110,
 ).add_to(map)
 
+# -------------------------
+# FeatureGroup
+# -------------------------
 fg0 = folium.FeatureGroup(name="パートナーエリア", show=False).add_to(map)
 fg1 = folium.FeatureGroup(name="基地局").add_to(map)
 fg2 = folium.FeatureGroup(name="エリア（円）", show=False).add_to(map)
 fg3 = folium.FeatureGroup(name="エリア（塗）", show=False).add_to(map)
-fg4 = folium.FeatureGroup(
-    name="eNB-LCID",
-    show=False,
-).add_to(map)
+fg4 = folium.FeatureGroup(name="eNB-LCID", show=False).add_to(map)
 
-# ベクターレイヤー
-
+# -------------------------
+# VectorTileLayer（高 zIndex）
+# -------------------------
 options = {
     "vectorTileLayerStyles": {
         "next_rakuten": {
@@ -96,16 +109,22 @@ options = {
 }
 
 vc = VectorTileLayer(
-    "https://area.uqcom.jp/api3/next_rakuten/{z}/{x}/{y}.mvt", "auローミング", options
+    "https://area.uqcom.jp/api3/next_rakuten/{z}/{x}/{y}.mvt",
+    "auローミング",
+    options,
+    zIndex=120,
 )
 
 fg0.add_child(vc)
 
+# -------------------------
+# マーカー・円
+# -------------------------
 for i, r in df.iterrows():
     enb_lcid = r["eNB-LCID"] or "737XXX-X,X,X"
     enb_lcid_700 = r["eNB-LCID_700"] or "737XXX-X,X,X"
 
-    tag_map = f'<p><a href="https://www.google.com/maps?layer=c&cbll={r["緯度"]},{r["経度"]}" target="_blank" rel="noopener noreferrer">{r["場所"]}</a></p>'
+    tag_map = f'<p><a href="https://www.google.com/maps?layer=c&cbll={r["緯度"]},{r["経度"]}" target="_blank">{r["場所"]}</a></p>'
 
     text = "\r\r".join(
         [
@@ -118,45 +137,43 @@ for i, r in df.iterrows():
     )
 
     escaped_text = html.escape(text)
-
-    tag_clip = f'<p><textarea id="myInput">{escaped_text}</textarea></p><p><button onclick="myFunction()">Copy location</button></p>'
+    tag_clip = f'<p><textarea id="myInput">{escaped_text}</textarea></p><p><button onclick="myFunction()">Copy</button></p>'
 
     tmp = pd.DataFrame(r.drop(labels=["場所", "color", "icon"]))
 
+    # Marker（zIndex 300）
     fg1.add_child(
         folium.Marker(
             location=[r["緯度"], r["経度"]],
             popup=folium.Popup(
-                "\n\n".join(
-                    [tag_map, tmp.to_html(header=False, escape=False), tag_clip]
-                ).strip(),
+                "\n\n".join([tag_map, tmp.to_html(header=False, escape=False), tag_clip]),
                 max_width=300,
             ),
-            tooltip=f'{r["場所"]}',
+            tooltip=r["場所"],
             icon=folium.Icon(color=r["color"], icon=r["icon"]),
-            place=r["場所"],
         )
     )
 
-    enb_lcid = r["eNB-LCID"] or "unknown"
-
+    # 円の半径
     radius = 780
-
     if r["設置タイプ"] == "屋内":
         radius = 78
     elif r["設置タイプ"] == "ピコセル":
         radius = 312
 
     if r["状況"] != "delete":
+        # 円（枠） zIndex=210
         fg2.add_child(
             folium.Circle(
                 location=[r["緯度"], r["経度"]],
-                popup=folium.Popup(f"<p>{enb_lcid}</p>", max_width=300),
                 radius=radius,
                 color=r["color"],
+                popup=folium.Popup(f"<p>{enb_lcid}</p>", max_width=300),
+                zIndex=210,
             )
         )
 
+        # 円（塗り） zIndex=200
         fg3.add_child(
             folium.Circle(
                 location=[r["緯度"], r["経度"]],
@@ -165,21 +182,25 @@ for i, r in df.iterrows():
                 weight=1,
                 fill=True,
                 fill_opacity=0.5,
+                zIndex=200,
             )
         )
 
+    # DivIcon（zIndex 400）
     fg4.add_child(
         folium.Marker(
             location=[r["緯度"], r["経度"]],
             icon=DivIcon(
                 icon_size=(110, 30),
                 icon_anchor=(55, -10),
-                html=f'<div style="text-align:center; font-size: 10pt; background-color:rgba(255,255,255,0.2)">{enb_lcid}</div>',
+                html=f'<div style="text-align:center; font-size:10pt; background-color:rgba(255,255,255,0.2)">{enb_lcid}</div>',
             ),
         )
     )
 
-# 検索
+# -------------------------
+# 検索・コントロール類
+# -------------------------
 folium.plugins.Search(
     layer=fg1,
     geom_type="Point",
@@ -188,39 +209,28 @@ folium.plugins.Search(
     search_label="place",
 ).add_to(map)
 
-# レイヤーコントロール
 folium.LayerControl().add_to(map)
-
-# 現在値
 folium.plugins.LocateControl(position="bottomright").add_to(map)
-
-# 距離測定
 folium.plugins.MeasureControl().add_to(map)
 
-# DRAW
 folium.plugins.Draw(
     draw_options={"polygon": False, "rectangle": False, "circlemarker": False}
 ).add_to(map)
 
+# -------------------------
+# クリップボード JS
+# -------------------------
 el = folium.MacroElement().add_to(map)
 el._template = jinja2.Template("""
     {% macro script(this, kwargs) %}
     function myFunction() {
-      /* Get the text field */
       var copyText = document.getElementById("myInput");
-
-      /* Select the text field */
       copyText.select();
-      copyText.setSelectionRange(0, 99999); /* For mobile devices */
-
-      /* Copy the text inside the text field */
+      copyText.setSelectionRange(0, 99999);
       document.execCommand("copy");
     }
     {% endmacro %}
 """)
 
 map_path = pathlib.Path("map", "index.html")
-
-# map_path.parent.mkdir(parents=True, exist_ok=True)
-
 map.save(str(map_path))
