@@ -19,10 +19,10 @@ jobs:
     steps:
       - uses: actions/checkout@v6
 
-      - name: Set up Python 3.13
+      - name: Set up Python 3.14
         uses: actions/setup-python@v6
         with:
-          python-version: "3.13"
+          python-version: "3.14"
 
       - name: Install dependencies
         run: |
@@ -36,7 +36,7 @@ jobs:
           python make_map.py
 
       - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
+        uses: actions/upload-pages-artifact@v7
         with:
           path: ./map
 
