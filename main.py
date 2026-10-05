@@ -9,6 +9,12 @@ def make_df():
         dtype=str,
     )
 
+    # プラチナバンド統合
+    df1["eNB-LCID"] = df1["eNB-LCID"].fillna("")
+    df1["eNB-LCID_700"] = df1["eNB-LCID_700"].fillna("")
+    
+    df1["eNB-LCID"] = df1["eNB-LCID"].str.cat(df1["eNB-LCID_700"], sep="\n").str.strip()
+    
     df2 = pd.read_csv(
         "https://docs.google.com/spreadsheets/d/e/2PACX-1vTuN5xiHhlnPTkv3auHkYLT9NPvvjayj5AdPrH5VBQdbELOzfONi236Vub6eSshv8jAxQw3V1rgbbgE/pub?gid=882951423&single=true&output=csv",
         dtype=str,
@@ -46,7 +52,6 @@ def make_df():
                 "sub6",
                 "ミリ波",
                 "eNB-LCID",
-                "eNB-LCID_700",
                 "基地局ID",
                 "緯度",
                 "経度",
@@ -86,7 +91,6 @@ df.reindex(
         "更新日時",
         "状況",
         "eNB-LCID",
-        "eNB-LCID_700",
         "基地局ID",
         "sector",
         "sub6",
