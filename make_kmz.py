@@ -90,6 +90,6 @@ df_ehime["eNB-LCID_700"] = df_ehime["eNB-LCID_700"].fillna("")
 
 df_ehime["eNB-LCID"] = df_ehime["eNB-LCID"].str.cat(df_ehime["eNB-LCID_700"], sep="\n").str.strip()
 
-df_ehime.drop(["ID", "eNB-LCID_700", "color", "icon"], axis=1, inplace=True)
+df_ehime.drop(["ID", "eNB-LCID_700"], axis=1, inplace=True)
 
 generate_kml_for_area(df_ehime, "ehime.kmz", "Ehime", "楽天モバイル基地局（愛媛県）")
