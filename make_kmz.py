@@ -84,4 +84,10 @@ df_ehime
 df_ehime["緯度"] = df_ehime["緯度"].astype(float)
 df_ehime["経度"] = df_ehime["経度"].astype(float)
 
+# プラチナバンドをまとめる
+df_ehime["eNB-LCID"] = df_ehime["eNB-LCID"].fillna("")
+df_ehime["eNB-LCID_700"] = df_ehime["eNB-LCID_700"].fillna("")
+
+df_ehime["eNB-LCID"] = df_ehime["eNB-LCID"].str.cat(df_ehime["eNB-LCID_700"], sep="\n").str.strip()
+
 generate_kml_for_area(df_ehime, "ehime.kmz", "Ehime", "楽天モバイル基地局（愛媛県）")
