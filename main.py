@@ -119,14 +119,14 @@ df["icon"] = df["状況"].replace(
 # プラチナバンド
 flagPT = df["eNB-LCID_700"].notna()
 
-df["場所"] = df["場所"].mask(flagPT, "【PB】" + df["場所"])
+df["場所"] = df["場所"].mask(flagPT, "[PB]" + df["場所"])
 
 # 5Gフラグの設定
 flag5G = df["sub6"].str.isnumeric() | df["ミリ波"].str.isnumeric()
 
 df["icon"] = df["icon"].mask(flag5G, "upload")
 df["color"] = df["color"].mask(flag5G & (df["状況"] == "open"), "darkblue")
-df["場所"] = df["場所"].mask(flag5G, "【5G】" + df["場所"])
+df["場所"] = df["場所"].mask(flag5G, "[5G]" + df["場所"])
 
 # 設置タイプごとの処理
 d = {
@@ -140,7 +140,7 @@ d = {
 
 for k, v in d.items():
     df["icon"] = df["icon"].mask((df["設置タイプ"] == k) & bool(v), v)
-    df["場所"] = df["場所"].mask((df["設置タイプ"] == k), f"【{k}】" + df["場所"])
+    df["場所"] = df["場所"].mask((df["設置タイプ"] == k), f"[{k}]" + df["場所"])
 
 csv_path = pathlib.Path("map", "ehime.csv")
 df.to_csv(csv_path, encoding="utf_8_sig")
