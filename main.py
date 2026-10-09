@@ -116,6 +116,11 @@ df["icon"] = df["状況"].replace(
     }
 )
 
+# プラチナバンド
+flagPT = df["eNB-LCID_700"].notna()
+
+df["場所"] = df["場所"].mask(flagPT, "【PT】" + df["場所"])
+
 # 5Gフラグの設定
 flag5G = df["sub6"].str.isnumeric() | df["ミリ波"].str.isnumeric()
 
