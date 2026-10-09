@@ -117,7 +117,7 @@ df["icon"] = df["状況"].replace(
 )
 
 # プラチナバンド
-flagPT = df["eNB-LCID_700"].notna()
+flagPT = df["eNB-LCID_700"] == ""
 
 df["場所"] = df["場所"].mask(flagPT, "[PB]" + df["場所"])
 
